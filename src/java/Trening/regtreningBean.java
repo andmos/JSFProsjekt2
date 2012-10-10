@@ -59,6 +59,8 @@ public class regtreningBean implements Serializable {
    
     public synchronized void setKategori(String enkategori){
       eiOkt.setKategori(enkategori);
+      
+      
     }
     
     public synchronized void setTekst(String enTekst){
