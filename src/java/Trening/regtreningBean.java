@@ -18,47 +18,47 @@ public class regtreningBean implements Serializable {
         
       }
       
-      public  int getOktnr(){
+      public synchronized  int getOktnr(){
         return eiOkt.getOktnr(); 
       }
-      public void setOktnr(int nyOktnr){
+      public synchronized void setOktnr(int nyOktnr){
         eiOkt.setOktnr(nyOktnr);
       }
-      public int getDato(){
+      public synchronized int getDato(){
       return eiOkt.getDato(); 
     }
     
-    public int getVarighet(){
+    public synchronized int getVarighet(){
       return eiOkt.getVarighet(); 
     }
     
-    public ArrayList<String> getKategori(){
+    public synchronized ArrayList<String> getKategori(){
       return eiOkt.getKategori(); 
     }
     
-    public String getKategoriStreng(){
+    public synchronized String getKategoriStreng(){
         return eiOkt.getKategoriStreng(); 
     }
     
-    public String getTekst(){
+    public synchronized String getTekst(){
       return eiOkt.getTekst(); 
     }
     
     
     
-    public void setDato(int enDato){
+    public synchronized void setDato(int enDato){
       eiOkt.setDato(enDato);
     }
     
-    public void setVarighet(int enVarighet){
+    public synchronized void setVarighet(int enVarighet){
       eiOkt.setVarighet(enVarighet);
     }
    
-    public void setKategori(String enKategori){
+    public synchronized void setKategori(String enKategori){
       eiOkt.setKategori(enKategori);
     }
     
-    public void setTekst(String enTekst){
+    public synchronized void setTekst(String enTekst){
       eiOkt.setTekst(enTekst);
     }
 }
