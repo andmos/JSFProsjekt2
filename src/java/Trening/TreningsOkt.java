@@ -14,6 +14,8 @@ public class TreningsOkt implements Serializable {
     private ArrayList<String> kategori = new ArrayList<String>();
     private String tekst; 
     
+    
+    
     public TreningsOkt(){
       
     }
@@ -65,5 +67,7 @@ public class TreningsOkt implements Serializable {
     public void setTekst(String enTekst){
       tekst = enTekst; 
     }
-
+    
+  
+    
 }
