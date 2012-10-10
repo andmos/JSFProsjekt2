@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
   <h:head>
     <title>Registrer ny økt</title>
   </h:head>
@@ -25,7 +26,15 @@
         </tr>
         <tr>
           <td>Kategori</td>
-          <!--<td><h:selectManyMenu value="#{reg.kategori}"/></td> -->
+          <td> 
+            <h:selectOneMenu id="Type"
+                             value="#{reg.kategori}">
+              <f:selectItem id="item1" itemLabel="Styrke" itemValue="1" />
+              <f:selectItem id="item2" itemLabel="Kondisjon" itemValue="2" />
+              <f:selectItem id="item3" itemLabel="intervall" itemValue="3" />
+              <f:selectItem id="item4" itemLabel="Kombinsajon" itemValue="4" />
+              <f:selectItem id="item5" itemLabel="Andre" itemValue="5" />
+            </h:selectOneMenu> </td>
         </tr>
         <tr>
           <td>Tekst</td>
