@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+  xmlns:h="http://java.sun.com/jsf/html">
+  <h:head>
+     <title>Registrert</title>
+  </h:head>
+  <h:body>
+    <h:form>
+      <h3>Info om registreringen</h3>
+      <br></br>
+      <p>
+        Du har øktnummer: <h:outputText value=" #{reg.oktnr}"/>, teksten du skrev: <h:outputText value=" #{reg.tekst}"/>
+      </p>
+      <br></br>
+      
+      <p><h:commandButton value="Tilbake" action="index"/></p>
+    </h:form>
+  </h:body>
+</html>
