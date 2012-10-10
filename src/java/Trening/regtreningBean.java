@@ -18,8 +18,49 @@ public class regtreningBean implements Serializable {
         
       }
       
-
-
+      public  int getOktnr(){
+        return eiOkt.getOktnr(); 
+      }
+      public void setOktnr(int nyOktnr){
+        eiOkt.setOktnr(nyOktnr);
+      }
+      public int getDato(){
+      return eiOkt.getDato(); 
+    }
+    
+    public int getVarighet(){
+      return eiOkt.getVarighet(); 
+    }
+    
+    public ArrayList<String> getKategori(){
+      return eiOkt.getKategori(); 
+    }
+    
+    public String getKategoriStreng(){
+        return eiOkt.getKategoriStreng(); 
+    }
+    
+    public String getTekst(){
+      return eiOkt.getTekst(); 
+    }
+    
+    
+    
+    public void setDato(int enDato){
+      eiOkt.setDato(enDato);
+    }
+    
+    public void setVarighet(int enVarighet){
+      eiOkt.setVarighet(enVarighet);
+    }
+   
+    public void setKategori(String enKategori){
+      eiOkt.setKategori(enKategori);
+    }
+    
+    public void setTekst(String enTekst){
+      eiOkt.setTekst(enTekst);
+    }
 }
 
 
