@@ -1,6 +1,9 @@
 
 package Trening;
 
+// FIRST MAKE IT WORK, THAN MAKE IT PRETTY.
+
+
 import java.io.Serializable; 
 import javax.inject.Inject; 
 import javax.enterprise.context.SessionScoped; 
@@ -22,9 +25,11 @@ public class regtreningBean implements Serializable {
       public synchronized  int getOktnr(){
         return eiOkt.getOktnr(); 
       }
+      
       public synchronized void setOktnr(int nyOktnr){
         eiOkt.setOktnr(nyOktnr);
       }
+      
       public synchronized int getDato(){
       return eiOkt.getDato(); 
     }
@@ -33,18 +38,15 @@ public class regtreningBean implements Serializable {
       return eiOkt.getVarighet(); 
     }
     
-    public synchronized ArrayList<String> getKategori(){
+    public synchronized String getKategori(){
       return eiOkt.getKategori(); 
     }
     
-    public synchronized String getKategoriStreng(){
-        return eiOkt.getKategoriStreng(); 
-    }
+    
     
     public synchronized String getTekst(){
       return eiOkt.getTekst(); 
     }
-    
     
     
     public synchronized void setDato(int enDato){
@@ -55,8 +57,8 @@ public class regtreningBean implements Serializable {
       eiOkt.setVarighet(enVarighet);
     }
    
-    public synchronized void setKategori(String enKategori){
-      eiOkt.setKategori(enKategori);
+    public synchronized void setKategori(String enkategori){
+      eiOkt.setKategori(enkategori);
     }
     
     public synchronized void setTekst(String enTekst){

@@ -11,7 +11,7 @@ public class TreningsOkt implements Serializable {
     private int oktnr; 
     private int dato; 
     private int varighet; 
-    private ArrayList<String> kategori = new ArrayList<String>();
+    private String kategori; 
     private String tekst; 
     
     
@@ -32,17 +32,11 @@ public class TreningsOkt implements Serializable {
       return varighet; 
     }
     
-    public ArrayList<String> getKategori(){
+    public String getKategori(){
       return kategori; 
     }
     
-    public String getKategoriStreng(){
-      String ut = ""; 
-      for (int i = 0; i < kategori.size(); i++) {
-        ut += kategori.get(i) + "\n"; 
-      }
-      return ut; 
-    }
+ 
     
     public String getTekst(){
       return tekst; 
@@ -61,7 +55,8 @@ public class TreningsOkt implements Serializable {
     }
    
     public void setKategori(String enKategori){
-      kategori.add(enKategori);
+      kategori = enKategori; 
+      
     }
     
     public void setTekst(String enTekst){
