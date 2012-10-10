@@ -10,6 +10,7 @@ import javax.inject.Named;
         
         
 @Named ("reg") 
+@SessionScoped
 
 public class regtreningBean implements Serializable {
       TreningsOkt eiOkt = new TreningsOkt(); 
