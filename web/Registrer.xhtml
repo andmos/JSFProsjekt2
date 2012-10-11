@@ -17,9 +17,9 @@ and open the template in the editor.
       <p>
         #{tekster.svarEn} <h:outputText value=" #{reg.oktnr}"/> #{tekster.svarTo} <h:outputText value=" #{reg.tekst}"/>
         
-        Dato: <h:outputText value=" #{reg.dato}">
-          <f:convertDateTime pattern="MM/yyyy"/>
-        </h:outputText>
+        Dato: <h:outputText value="#{reg.dato}" >
+			<f:convertDateTime pattern="dd-MM-yyyy" />
+		</h:outputText>
         
         
         #{tekster.svarTre} <h:outputText value="#{reg.kategori}"/>

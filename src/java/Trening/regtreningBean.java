@@ -50,8 +50,8 @@ public class regtreningBean implements Serializable {
     }
     
     
-    public synchronized void setDato(Date enDato){
-      eiOkt.setDato(enDato);
+    public synchronized void setDato(Date nyDato){
+      eiOkt.setDato(nyDato);
     }
     
     public synchronized void setVarighet(int enVarighet){

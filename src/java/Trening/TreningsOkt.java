@@ -11,7 +11,7 @@ import java.text.*;
 
 public class TreningsOkt implements Serializable {
     private int oktnr; 
-    private Date dato = new Date(); 
+    private Date dato; 
     private int varighet; 
     private String kategori; 
     private String tekst; 
