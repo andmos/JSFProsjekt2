@@ -55,8 +55,8 @@ public class TreningsOkt implements Serializable {
      dato = enDato; 
     }
     
-    public void setVarighet(int enVarighet){
-      varighet = enVarighet; 
+    public void setVarighet(int enVarighet){    
+        varighet = enVarighet;
     }
    
     public void setKategori(String enKategori){
