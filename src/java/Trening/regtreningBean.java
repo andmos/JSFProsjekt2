@@ -29,8 +29,8 @@ public class regtreningBean implements Serializable {
         return eiOkt.getOktnr(); 
       }
       
-      public synchronized void setOktnr(int nyOktnr){
-        eiOkt.setOktnr(nyOktnr);
+      public synchronized void setOktnr(){
+        eiOkt.setOktnr();
       }
       
       public synchronized Date getDato(){

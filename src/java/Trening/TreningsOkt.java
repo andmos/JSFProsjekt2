@@ -10,7 +10,7 @@ import java.text.*;
 
 
 public class TreningsOkt implements Serializable {
-    private int oktnr; 
+    private int oktnr = 0; 
     private Date dato; 
     private int varighet; 
     private String kategori; 
@@ -19,8 +19,10 @@ public class TreningsOkt implements Serializable {
     
     
     public TreningsOkt(){
-      
+      oktnr ++; 
     }
+    
+   
     
     public int getOktnr(){
       return oktnr; 
@@ -44,8 +46,9 @@ public class TreningsOkt implements Serializable {
       return tekst; 
     }
     
-    public void setOktnr(int etOktnr){
-      oktnr = etOktnr; 
+    public void setOktnr(){
+      // oktnr ++;  
+      
     }
     
     public void setDato(Date enDato){
