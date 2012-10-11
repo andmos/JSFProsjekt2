@@ -71,6 +71,7 @@ public class regtreningBean implements Serializable {
     }
     
     public String englishAction(){
+        System.out.println("her er jeg");
         FacesContext context = FacesContext.getCurrentInstance();
         context.getViewRoot().setLocale(new Locale("en"));
         return null;
