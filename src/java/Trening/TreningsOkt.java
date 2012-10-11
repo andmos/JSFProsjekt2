@@ -4,12 +4,14 @@ import java.io.Serializable;
 import javax.inject.Inject; 
 import javax.enterprise.context.SessionScoped; 
 import java.util.ArrayList; 
-
+import javax.inject.Named;
+import java.util.Date; 
+import java.text.*;
 
 
 public class TreningsOkt implements Serializable {
     private int oktnr; 
-    private int dato; 
+    private Date dato = new Date(); 
     private int varighet; 
     private String kategori; 
     private String tekst; 
@@ -24,7 +26,7 @@ public class TreningsOkt implements Serializable {
       return oktnr; 
     }
     
-    public int getDato(){
+    public Date getDato(){
       return dato; 
     }
     
@@ -46,8 +48,8 @@ public class TreningsOkt implements Serializable {
       oktnr = etOktnr; 
     }
     
-    public void setDato(int enDato){
-      dato = enDato; 
+    public void setDato(Date enDato){
+     dato = enDato; 
     }
     
     public void setVarighet(int enVarighet){

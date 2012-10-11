@@ -9,7 +9,8 @@ import javax.inject.Inject;
 import javax.enterprise.context.SessionScoped; 
 import java.util.ArrayList; 
 import javax.inject.Named;
-
+import java.util.Date; 
+import java.text.*;
         
         
 @Named ("reg") 
@@ -30,7 +31,7 @@ public class regtreningBean implements Serializable {
         eiOkt.setOktnr(nyOktnr);
       }
       
-      public synchronized int getDato(){
+      public synchronized Date getDato(){
       return eiOkt.getDato(); 
     }
     
@@ -49,7 +50,7 @@ public class regtreningBean implements Serializable {
     }
     
     
-    public synchronized void setDato(int enDato){
+    public synchronized void setDato(Date enDato){
       eiOkt.setDato(enDato);
     }
     

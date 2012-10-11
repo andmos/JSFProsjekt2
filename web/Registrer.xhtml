@@ -5,7 +5,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"  
-  xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
   <h:head>
      <title>Registrert</title>
   </h:head>
@@ -16,6 +17,9 @@ and open the template in the editor.
       <p>
         Du har øktnummer: <h:outputText value=" #{reg.oktnr}"/>, teksten du skrev: <h:outputText value=" #{reg.tekst}"/>
         
+        Dato: <h:outputText value=" #{reg.dato}">
+          <f:convertDateTime pattern="MM/yyyy"/>
+        </h:outputText>
         
         
         treningsmetode <h:outputText value="#{reg.kategori}"/>
