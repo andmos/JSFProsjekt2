@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1"?>
 <!--
 To change this template, choose Tools | Templates
 and open the template in the editor.
@@ -8,25 +8,25 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core">
   <h:head>
-     <title>Registrert</title>
+      <title>#{tekster.tittelTo}</title>
   </h:head>
   <h:body>
     <h:form>
-      <h3>Info om registreringen</h3>
+        <h3>#{tekster.overskriftTo}</h3>
       <br></br>
       <p>
-        Du har øktnummer: <h:outputText value=" #{reg.oktnr}"/>, teksten du skrev: <h:outputText value=" #{reg.tekst}"/>
+        #{tekster.svarEn} <h:outputText value=" #{reg.oktnr}"/> #{tekster.svarTo} <h:outputText value=" #{reg.tekst}"/>
         
         Dato: <h:outputText value=" #{reg.dato}">
           <f:convertDateTime pattern="MM/yyyy"/>
         </h:outputText>
         
         
-        treningsmetode <h:outputText value="#{reg.kategori}"/>
+        #{tekster.svarTre} <h:outputText value="#{reg.kategori}"/>
       </p>
       <br></br>
       
-      <p><h:commandButton value="Tilbake" action="index"/></p>
+      <p><h:commandButton value="#{tekster.knappTilbake}" action="index"/></p>
     </h:form>
   </h:body>
 </html>
