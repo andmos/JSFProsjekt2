@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javax.inject.Named;
 import java.util.Date; 
 import java.text.*;
+import java.util.Locale;
+import javax.faces.context.FacesContext;
         
         
 @Named ("reg") 
@@ -66,6 +68,18 @@ public class regtreningBean implements Serializable {
     
     public synchronized void setTekst(String enTekst){
       eiOkt.setTekst(enTekst);
+    }
+    
+    public String englishAction(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getViewRoot().setLocale(new Locale("en"));
+        return null;
+    }
+    
+    public String norwegianAction(){
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getViewRoot().setLocale(new Locale("no"));
+        return null;
     }
 }
 

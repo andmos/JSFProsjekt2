@@ -49,9 +49,11 @@
         </tr>
       </table>
       <p>
+          
           <h:commandButton value="#{tekster.knappReg}" action="Registrer"/>
-          <h:commandButton value="#{tekster.knappSprak}" action="english"/>
-        
+          <h:commandButton value="#{tekster.knappSprakE}" action="#{reg.englishAction()}"/>   
+          <h:commandButton value="#{tekster.knappSprakN}" action ="#{reg.norwegianAction()}"/>
+          
       </p>
     </h:form>
     
