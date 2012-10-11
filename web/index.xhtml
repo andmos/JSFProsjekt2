@@ -53,8 +53,17 @@
           <h:commandButton value="#{tekster.knappReg}" action="Registrer"/>
           <br>
           #{tekster.svarFire}
-          <h:commandButton value="#{tekster.knappSprakE}" action="#{reg.englishAction()}"/>   
-          <h:commandButton value="#{tekster.knappSprakN}" action ="#{reg.norwegianAction()}"/>
+          
+            <h:commandLink action="#{reg.englishAction()}">
+              <h:graphicImage library="bilder" name="en.png" style="border: 0px; margin-left: 5px;"/>
+            </h:commandLink>
+            
+            <h:commandLink action="#{reg.norwegianAction()}">
+              <h:graphicImage library="bilder" name="no.png" style="border: 0px; margin-left: 10px;"/>
+            </h:commandLink>
+          
+         <!-- <h:commandButton value="#{tekster.knappSprakE}" action="#{reg.englishAction()}"/>   
+          <h:commandButton value="#{tekster.knappSprakN}" action ="#{reg.norwegianAction()}"/>-->
           </br>
       </p>
     </h:form>
