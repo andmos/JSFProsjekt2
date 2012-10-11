@@ -4,6 +4,7 @@ overskrift=Registrer en ny treningsokt
 OverskriftTo=Info om registrering
 oktnummer=Oktnummer
 dato=Dato for okten(dd-mm-aaaa)
+datoTo=Dato for okten
 varighet= oktens varighets
 kategori=Kategori
 styrke=Styrke

@@ -15,14 +15,16 @@ and open the template in the editor.
         <h3>#{tekster.overskriftTo}</h3>
       <br></br>
       <p>
-        #{tekster.svarEn} <h:outputText value=" #{reg.oktnr}"/> #{tekster.svarTo} <h:outputText value=" #{reg.tekst}"/>
+          <ul>
+              <li><strong>#{tekster.svarEn}</strong> <h:outputText value=" #{reg.oktnr}"/></li>
+              <li><strong>#{tekster.svarTo}</strong> <h:outputText value=" #{reg.tekst}"/></li>
         
-        #{tekster.dato} <h:outputText value="#{reg.dato}" >
+              <li><strong> #{tekster.datoTo}</strong> <h:outputText value="#{reg.dato}" >
 			<f:convertDateTime pattern="dd-MM-yyyy" />
-		</h:outputText>
+                  </h:outputText> </li>
         
-        
-        #{tekster.svarTre} <h:outputText value="#{reg.kategori}"/>
+              <li><strong>#{tekster.svarTre}</strong> <h:outputText value="#{reg.kategori}"/></li>
+          </ul>
       </p>
       <br></br>
       

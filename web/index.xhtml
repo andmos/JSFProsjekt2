@@ -36,11 +36,11 @@
           <td> 
             <h:selectOneMenu id="Type"
                              value="#{reg.kategori}">
-                <f:selectItem itemLabel="#{tekster.styrke}" itemValue="Styrke" />
-                <f:selectItem itemLabel="#{tekster.kondisjon}" itemValue="Kondisjon" />
-                <f:selectItem itemLabel="#{tekster.intervall}" itemValue="Intervall" />
-                <f:selectItem itemLabel="#{tekster.kombinasjon}" itemValue="Kombinasjon" />
-                <f:selectItem itemLabel="#{tekster.andre}" itemValue="Andre" />
+                <f:selectItem itemLabel="#{tekster.styrke}" itemValue="#{tekster.styrke}" />
+                <f:selectItem itemLabel="#{tekster.kondisjon}" itemValue="#{tekster.kondisjon}" />
+                <f:selectItem itemLabel="#{tekster.intervall}" itemValue="#{tekster.intervall}" />
+                <f:selectItem itemLabel="#{tekster.kombinasjon}" itemValue="#{tekster.kombinasjon}" />
+                <f:selectItem itemLabel="#{tekster.andre}" itemValue="#{tekster.andre}" />
             </h:selectOneMenu> </td>
         </tr>
         <tr>
