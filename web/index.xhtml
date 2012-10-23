@@ -58,23 +58,29 @@
         
           <h:commandButton value="#{tekster.knappReg}" action="Registrer"/>
           <br>
-          #{tekster.svarFire}
           
-            <h:commandLink action="#{reg.englishAction()}">
-              <h:graphicImage library="bilder" name="en.png" style="border: 0px; margin-left: 5px;"/>
-            </h:commandLink>
+          
             
-            <h:commandLink action="#{reg.norwegianAction()}">
-              <h:graphicImage library="bilder" name="no.png" style="border: 0px; margin-left: 10px;"/>
-            </h:commandLink>   
-       
           </br>
           
       </p>
           
           </h:form>
         </ui:define>
-    
+      <ui:define name="bottom">
+      <h:form>
+        #{tekster.svarFire}
+        <br></br>
+        <br></br>
+        <h:commandLink action="#{reg.englishAction()}">
+              <h:graphicImage library="bilder" name="en.png" style="border: 0px; margin-left: 5px;"/>
+            </h:commandLink>
+            
+            <h:commandLink action="#{reg.norwegianAction()}">
+              <h:graphicImage library="bilder" name="no.png" style="border: 0px; margin-left: 20px;"/>
+            </h:commandLink>   
+      </h:form>
+    </ui:define>
    </ui:composition>
   </h:body> 
       
