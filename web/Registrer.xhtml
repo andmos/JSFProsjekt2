@@ -12,10 +12,17 @@ and open the template in the editor.
       <title>#{tekster.tittelTo}</title>
   </h:head>
   <h:body>
-    <h:form>
+    <ui:composition template="standardTemplate.xhtml">
+    
       <ui:define name="top">
         <h3>#{tekster.overskriftTo}</h3>
+      
       </ui:define>
+      
+      
+      
+        <ui:define name="content">
+      <h:form>
       <br></br>
       <p>
           <ul>
@@ -31,7 +38,17 @@ and open the template in the editor.
       </p>
       <br></br>
       
-      <p><h:commandButton value="#{tekster.knappTilbake}" action="index"/></p>
+      
+        
     </h:form>
+        </ui:define>
+      
+      <ui:define name="bottom">
+        <h:form>
+        <p><h:commandButton value="#{tekster.knappTilbake}" action="index"/></p>
+        </h:form>
+      </ui:define>
+      
+      </ui:composition>
   </h:body>
 </html>
