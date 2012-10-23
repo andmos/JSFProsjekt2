@@ -4,85 +4,68 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-      
-      
-      
+  
   <h:head>
       <title>#{tekster.tittel}</title>
-      
   </h:head>
-  
   <h:body>
     <ui:composition template="standardTemplate.xhtml">
-    
-      
       <ui:define name="top">
         <h3>#{tekster.overskrift}</h3>
       </ui:define>
       <ui:define name="content">
         <h:form>
-      <table>
-       
-        <tr>
-            <td>#{tekster.dato}</td>
-          <td>
-            <h:inputText value="#{reg.dato}">
-            <f:convertDateTime pattern="dd-MM-yyyy"/>
-            </h:inputText>
-          </td>
-        </tr>
-        <tr>
-            <td>#{tekster.varighet}</td>
-          <td><h:inputText value="#{reg.varighet}"/></td>
-        </tr>
-        <tr>
-            <td>#{tekster.kategori}</td>
-          <td> 
-            <h:selectOneMenu id="Type"
-                             value="#{reg.kategori}">
-                <f:selectItem itemLabel="#{tekster.styrke}" itemValue="#{tekster.styrke}" />
-                <f:selectItem itemLabel="#{tekster.kondisjon}" itemValue="#{tekster.kondisjon}" />
-                <f:selectItem itemLabel="#{tekster.intervall}" itemValue="#{tekster.intervall}" />
-                <f:selectItem itemLabel="#{tekster.kombinasjon}" itemValue="#{tekster.kombinasjon}" />
-                <f:selectItem itemLabel="#{tekster.andre}" itemValue="#{tekster.andre}" />
-            </h:selectOneMenu> </td>
-        </tr>
-        <tr>
-            <td>#{tekster.tekst}</td>
-          <td><h:inputText value="#{reg.tekst}"/></td>
-        </tr>
-      </table>
-      
-            
-      <p>
-        
-          <h:commandButton value="#{tekster.knappReg}" action="Registrer"/>
-          <br>
-          
-          
-            
-          </br>
-          
-      </p>
-          
+          <table>
+            <tr>
+              <td>#{tekster.dato}</td>
+              <td>
+                <h:inputText value="#{reg.dato}">
+                  <f:convertDateTime pattern="dd-MM-yyyy"/>
+                  </h:inputText>
+              </td>
+             </tr>
+            <tr>
+              <td>#{tekster.varighet}</td>
+              <td><h:inputText value="#{reg.varighet}"/></td>
+            </tr>
+            <tr>
+              <td>#{tekster.kategori}</td>
+              <td>
+                    <h:selectOneMenu id="Type" value="#{reg.kategori}">
+                      <f:selectItem itemLabel="#{tekster.styrke}" itemValue="#{tekster.styrke}" />
+                      <f:selectItem itemLabel="#{tekster.kondisjon}" itemValue="#{tekster.kondisjon}" />
+                      <f:selectItem itemLabel="#{tekster.intervall}" itemValue="#{tekster.intervall}" />
+                      <f:selectItem itemLabel="#{tekster.kombinasjon}" itemValue="#{tekster.kombinasjon}" />
+                      <f:selectItem itemLabel="#{tekster.andre}" itemValue="#{tekster.andre}" />
+                    </h:selectOneMenu> 
+              </td>
+            </tr>
+            <tr>
+              <td>#{tekster.tekst}</td>
+              <td>
+                <h:inputText value="#{reg.tekst}"/>
+              </td>
+              </tr>
+            </table>
+          <p>
+            <h:commandButton value="#{tekster.knappReg}" action="Registrer"/>
+            <br></br>
+          </p>
           </h:form>
         </ui:define>
       <ui:define name="bottom">
-      <h:form>
-        #{tekster.svarFire}
-        <br></br>
-        <br></br>
-        <h:commandLink action="#{reg.englishAction()}">
-              <h:graphicImage library="bilder" name="en.png" style="border: 0px; margin-left: 5px;"/>
-            </h:commandLink>
-            
-            <h:commandLink action="#{reg.norwegianAction()}">
-              <h:graphicImage library="bilder" name="no.png" style="border: 0px; margin-left: 20px;"/>
-            </h:commandLink>   
-      </h:form>
-    </ui:define>
-   </ui:composition>
-  </h:body> 
-      
+        <h:form>
+          #{tekster.svarFire}
+          <br></br>
+          <br></br>
+          <h:commandLink action="#{reg.englishAction()}">
+            <h:graphicImage library="bilder" name="en.png" style="border: 0px; margin-left: 5px;"/>
+          </h:commandLink>
+          <h:commandLink action="#{reg.norwegianAction()}">
+            <h:graphicImage library="bilder" name="no.png" style="border: 0px; margin-left: 20px;"/>
+          </h:commandLink>
+        </h:form>
+      </ui:define>
+    </ui:composition>
+  </h:body>  
 </html>
-

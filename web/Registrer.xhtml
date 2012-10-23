@@ -16,39 +16,28 @@ and open the template in the editor.
     
       <ui:define name="top">
         <h3>#{tekster.overskriftTo}</h3>
-      
       </ui:define>
-      
-      
-      
         <ui:define name="content">
       <h:form>
       <br></br>
       <p>
           <ul>
-              <li><strong>#{tekster.svarEn}</strong> <h:outputText value=" #{reg.oktnr}"/></li>
-              <li><strong>#{tekster.svarTo}</strong> <h:outputText value=" #{reg.tekst}"/></li>
-        
-              <li><strong> #{tekster.datoTo}</strong> <h:outputText value="#{reg.dato}" >
-			<f:convertDateTime pattern="dd-MM-yyyy" />
-                  </h:outputText> </li>
-        
-              <li><strong>#{tekster.svarTre}</strong> <h:outputText value="#{reg.kategori}"/></li>
+            <li><strong>#{tekster.svarEn}</strong> <h:outputText value=" #{reg.oktnr}"/></li>
+            <li><strong>#{tekster.svarTo}</strong> <h:outputText value=" #{reg.tekst}"/></li>
+            <li><strong> #{tekster.datoTo}</strong> <h:outputText value="#{reg.dato}" >
+            <f:convertDateTime pattern="dd-MM-yyyy" />
+            </h:outputText> </li>
+            <li><strong>#{tekster.svarTre}</strong> <h:outputText value="#{reg.kategori}"/></li>
           </ul>
       </p>
       <br></br>
-      
-      
-        
     </h:form>
         </ui:define>
-      
       <ui:define name="bottom">
         <h:form>
         <p><h:commandButton value="#{tekster.knappTilbake}" action="index"/></p>
         </h:form>
       </ui:define>
-      
       </ui:composition>
   </h:body>
 </html>
