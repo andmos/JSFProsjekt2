@@ -13,13 +13,14 @@
   </h:head>
   
   <h:body>
+    <ui:composition template="standardTemplate.xhtml">
     
-    <h:form>
-      <ui:composition template="standardTemplate.xhtml">
+      
       <ui:define name="top">
         <h3>#{tekster.overskrift}</h3>
       </ui:define>
       <ui:define name="content">
+        <h:form>
       <table>
        
         <tr>
@@ -51,8 +52,8 @@
           <td><h:inputText value="#{reg.tekst}"/></td>
         </tr>
       </table>
-      </ui:define>
-        <ui:define name="bottom">
+      
+            
       <p>
         
           <h:commandButton value="#{tekster.knappReg}" action="Registrer"/>
@@ -70,10 +71,12 @@
           </br>
           
       </p>
+          
+          </h:form>
         </ui:define>
-      </ui:composition>
-    </h:form>
     
-  </h:body>
+   </ui:composition>
+  </h:body> 
+      
 </html>
 
