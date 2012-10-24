@@ -19,12 +19,16 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 
 public class regtreningBean implements Serializable {
-      TreningsOkt eiOkt = new TreningsOkt(); 
-      
+     TreningsOkt eiOkt = new TreningsOkt(); 
+      //ArrayList<TreningsOkt> eiOkt = new ArrayList<TreningsOkt>();
       public regtreningBean(){
         
       }
-      
+//      public void addAlt(Date dato, String kategori, String tekst, int varighet, boolean skalSlettes){
+//        skalSlettes = false;
+//        eiOkt.add(new TreningsOkt(dato, kategori, tekst, varighet, skalSlettes));
+//      }
+//      
       public synchronized  int getOktnr(){
         return eiOkt.getOktnr(); 
       }
