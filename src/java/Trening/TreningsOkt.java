@@ -16,7 +16,13 @@ public class TreningsOkt implements Serializable {
     private String kategori; 
     private String tekst; 
     
-    
+//    public TreningsOkt(Date dato, String kategori, String tekst, int varighet, boolean skalSlettes){
+//      this.dato=dato;
+//      this.kategori=kategori;
+//      this.oktnr=oktnr;
+//      this.varighet = varighet;
+//      oktnr++;
+//    }
     
     public TreningsOkt(){
       oktnr ++; 
