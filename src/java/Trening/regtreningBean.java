@@ -49,6 +49,10 @@ public class regtreningBean implements Serializable {
           return oversikt.getSum();
       }
       
+      public synchronized int getAntallOkter(){
+          return oversikt.getAntallOkter();
+      }
+      
       public synchronized TreningsOkt getTempOkt(){
           return tempOkt;
       }
@@ -66,7 +70,7 @@ public class regtreningBean implements Serializable {
               tempOkt.nullstill();
           }
           
-          int indeks = tabelldata.size() -1;
+          int indeks = tabelldata.size()-2;
        //   while(indeks >= 0){
               System.out.println("jeg er inn");
               TreningsOktStatus tos = tabelldata.get(indeks);

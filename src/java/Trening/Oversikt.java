@@ -22,11 +22,14 @@ public class Oversikt implements Serializable{
     
     public double getSum(){
         double sum = 0.0;
+        int antall = 0;
         for(TreningsOkt enOkt : alleOkt){
             sum += enOkt.getVarighet();
+            antall++;
         }
-        return sum;
+        return sum/antall;
     }
+    
     
     public int getAntallOkter(){
         return alleOkt.size();
