@@ -68,8 +68,11 @@ public class regtreningBean implements Serializable {
           
           int indeks = tabelldata.size() -1;
           while(indeks >= 0){
+              System.out.println("jeg er inn");
               TreningsOktStatus tos = tabelldata.get(indeks);
+              System.out.println("blabla");
               if(tos.getSkalSlettes()){
+                  System.out.println("og her inne");
                   oversikt.slettOkt(tos.getTreningsOkt());
                   tabelldata.remove(indeks);
               }

@@ -1,8 +1,10 @@
 
 package Trening;
 
+import java.io.Serializable;
 
-public class TreningsOktStatus {
+
+public class TreningsOktStatus implements Serializable{
     private TreningsOkt treningsokt;
     private boolean skalSlettes;
     

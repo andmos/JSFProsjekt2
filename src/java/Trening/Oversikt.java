@@ -1,9 +1,10 @@
 package Trening;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Oversikt {
+public class Oversikt implements Serializable{
     
     private String bruker = "";
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
@@ -42,13 +43,12 @@ public class Oversikt {
     }
      
     public void slettOkt(TreningsOkt valgt){
+        System.out.println("hit kom jeg");
         alleOkt.remove(valgt);
+        System.out.println("har sletta");
      }
       
-    /*
-    public void endreOkt(TreningsOkt ){
-        
-    }*/
+   
      
     
 }
