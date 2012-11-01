@@ -51,6 +51,7 @@ public class Oversikt implements Serializable{
         System.out.println("har sletta");
      }
       
+    
    
      
     
