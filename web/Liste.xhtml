@@ -29,7 +29,7 @@ and open the template in the editor.
             <h:outputText value="#{tekster.datoTre}"/>
           </f:facet>
             <h:inputText value="#{enOkt.treningsOkt.dato}"
-                       styleClass="left_content">
+                       styleClass="lol">
             <f:convertDateTime pattern="dd.MM.yyyy"/>
           </h:inputText>
           <f:facet name="footer">
@@ -44,7 +44,7 @@ and open the template in the editor.
             <h:outputText value="#{tekster.kategori}"/>
           </f:facet>
             <h:inputText value="#{enOkt.treningsOkt.kategori}"
-                       styleClass="left_content"/>
+                       styleClass="lol"/>
           <f:facet name="footer">
             <h:outputText value=""/>
           </f:facet>
@@ -56,9 +56,9 @@ and open the template in the editor.
             <h:outputText value="#{tekster.tekst}"/>
           </f:facet>
             <h:inputText value="#{enOkt.treningsOkt.tekst}"
-                       styleClass="left_content"/>
+                       styleClass="lol"/>
           <f:facet name="footer">
-            <h:outputText value="#{tekster.sum}" styleClass="right_content"/>
+            <h:outputText value="#{tekster.sum}" styleClass="lol2"/>
           </f:facet>
         </h:column>
         
@@ -66,14 +66,14 @@ and open the template in the editor.
         <h:column>
           <f:facet name="header">
             <h:outputText value="#{tekster.varighet}"
-                          styleClass="left_content"/>
+                          styleClass="lol"/>
             </f:facet>
           <h:inputText value="#{enOkt.treningsOkt.varighet}"
-                       styleClass="right_content">
+                       styleClass="lol2">
           </h:inputText>
           <f:facet name="footer">
             <h:outputText value="#{reg.sum}"
-                          styleClass="right_content">
+                          styleClass="lol2">
               <f:convertNumber pattern="00"/>
             </h:outputText>
           </f:facet>
@@ -83,7 +83,7 @@ and open the template in the editor.
         <h:column>
           <f:facet name="header">
             <h:outputText value="#{tekster.slett}"
-                          styleClass="left_content"/>
+                          styleClass="lol"/>
           </f:facet>
             <h:selectBooleanCheckbox value="#{enOkt.skalSlettes}"/>
         </h:column>
