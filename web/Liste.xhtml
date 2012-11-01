@@ -20,9 +20,9 @@ and open the template in the editor.
         <ui:define name="content">
       <h:form>
       <br></br>
-      <h:dataTable value="#{transaksjonsbehandler.tabelldata}" var="enTrans"
+      <h:dataTable value="#{reg.tabelldata}" var="enOkt"
                    styleClass="standard" headerClass="hode" rowClasses="oddeRad, likeRad" footerClass="fot"
-                   rendered="#{transaksjonsbehandler.datafins}">
+                   rendered="#{reg.dataFins}">
         <!-- Kolonne Dato -->
         <h:column>
           <f:facet name="header">
@@ -43,9 +43,50 @@ and open the template in the editor.
           <f:facet name="header">
             <h:outputText value="#{tekster.kategori}"/>
           </f:facet>
+          <h:inputText value="#{reg.tempOkt.kategori}"
+                       styleClass="left_content"/>
+          <f:facet name="footer">
+            <h:outputText value=""/>
+          </f:facet>
         </h:column>
-      
-      
+        
+        <!-- Kolonne tekst -->
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{tekster.tekst}"/>
+          </f:facet>
+          <h:inputText value="#{reg.tempOkt.tekst}"
+                       styleClass="left_content"/>
+          <f:facet name="footer">
+            <h:outputText value="#{tekster.sum}" styleClass="right_content"/>
+          </f:facet>
+        </h:column>
+        
+        <!-- Kolonne varighet -->
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{tekster.varighet}"
+                          styleClass="left_content"/>
+            </f:facet>
+          <h:inputText value="#{reg.tempOkt.varighet}"
+                       styleClass="right_content">
+          </h:inputText>
+          <f:facet name="footer">
+            <h:outputText value="#{reg.sum}"
+                          styleClass="right_content">
+              <f:convertNumber pattern="00"/>
+            </h:outputText>
+          </f:facet>
+        </h:column>
+        
+        <!-- Kolonne sletting -->
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{tekster.slett}"
+                          styleClass="left_content"/>
+          </f:facet>
+          <h:selectBooleanCheckbox value="#{reg.lol}"/>
+        </h:column>
       </h:dataTable>
       
       
@@ -54,7 +95,11 @@ and open the template in the editor.
         </ui:define>
       <ui:define name="bottom">
         <h:form>
-        <p><h:commandButton value="#{tekster.knappTilbake}" action="index"/></p>
+          
+            
+          
+        <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
+        <h:commandButton value="#{tekster.oppdater}" action="#{reg.oppdater()}"/>
         </h:form>
       </ui:define>
       </ui:composition>
