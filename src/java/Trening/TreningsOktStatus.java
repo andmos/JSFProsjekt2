@@ -19,10 +19,12 @@ public class TreningsOktStatus implements Serializable{
     }
     
     public synchronized boolean getSkalSlettes(){
-        return skalSlettes;
+       System.out.println(this.skalSlettes + "ER VERDIEN JEG LETER ETTER");  
+      return skalSlettes;
     }
     
     public void setSkalSlettes(boolean nySkalSlettes){
+        System.out.println(nySkalSlettes + "ER VERDIEN JEG LETER ETTER");
         skalSlettes = nySkalSlettes;
     }
     
