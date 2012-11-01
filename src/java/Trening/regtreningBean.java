@@ -28,6 +28,10 @@ public class regtreningBean implements Serializable {
       public regtreningBean(){
         
       }
+
+    public List<TreningsOktStatus> getTabelldata() {
+        return tabelldata;
+    }
  
       public synchronized boolean getDataFins(){
           return(tabelldata.size() > 0);
