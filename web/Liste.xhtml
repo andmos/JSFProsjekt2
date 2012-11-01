@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+      <title>#{tekster.tittelTo}</title>
+  </h:head>
+  <h:body>
+    <ui:composition template="standardTemplate.xhtml">
+    
+      <ui:define name="top">
+        <h3>#{tekster.oversikt}</h3>
+      </ui:define>
+        <ui:define name="content">
+      <h:form>
+      <br></br>
+      <h:dataTable value="#{transaksjonsbehandler.tabelldata}" var="enTrans"
+                   styleClass="standard" headerClass="hode" rowClasses="oddeRad, likeRad" footerClass="fot"
+                   rendered="#{transaksjonsbehandler.datafins}">
+        <!-- Kolonne Dato -->
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{tekster.datoTre}"/>
+          </f:facet>
+          <h:inputText value="#{reg.dato}"
+                       styleClass="left_content">
+            <f:convertDateTime pattern="dd.MM.yyyy"/>
+          </h:inputText>
+          <f:facet name="footer">
+            <h:outputText value=""/>
+          </f:facet>
+        </h:column>
+        
+        
+        <!-- Kolonne kategori -->
+        <h:column>
+          <f:facet name="header">
+            <h:outputText value="#{tekster.kategori}"/>
+          </f:facet>
+        </h:column>
+      
+      
+      </h:dataTable>
+      
+      
+      
+    </h:form>
+        </ui:define>
+      <ui:define name="bottom">
+        <h:form>
+        <p><h:commandButton value="#{tekster.knappTilbake}" action="index"/></p>
+        </h:form>
+      </ui:define>
+      </ui:composition>
+  </h:body>
+</html>
