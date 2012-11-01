@@ -78,45 +78,45 @@ public class regtreningBean implements Serializable {
       
       
       
-//      public synchronized  int getOktnr(){
-//        return eiOkt.getOktnr(); 
-//      }
-//      
-//      public synchronized void setOktnr(){
-//        eiOkt.setOktnr();
-//      }
-//      
-//      public synchronized Date getDato(){
-//      return eiOkt.getDato(); 
-//    }
-//    
-//    public synchronized int getVarighet(){
-//      return eiOkt.getVarighet(); 
-//    }
-//    
-//    public synchronized String getKategori(){
-//      return eiOkt.getKategori(); 
-//    }
-//
-//    public synchronized String getTekst(){
-//      return eiOkt.getTekst(); 
-//    }
-//    
-//    public synchronized void setDato(Date nyDato){
-//      eiOkt.setDato(nyDato);
-//    }
-//    
-//    public synchronized void setVarighet(int enVarighet){
-//      eiOkt.setVarighet(enVarighet);
-//    }
-//   
-//    public synchronized void setKategori(String enkategori){
-//      eiOkt.setKategori(enkategori);    
-//    }
-//    
-//    public synchronized void setTekst(String enTekst){
-//      eiOkt.setTekst(enTekst);
-//    }
+      public synchronized  int getOktnr(){
+        return tempOkt.getOktnr(); 
+      }
+      
+      public synchronized void setOktnr(){
+        tempOkt.setOktnr();
+      }
+      
+      public synchronized Date getDato(){
+      return tempOkt.getDato(); 
+    }
+    
+    public synchronized int getVarighet(){
+      return tempOkt.getVarighet(); 
+    }
+    
+    public synchronized String getKategori(){
+      return tempOkt.getKategori(); 
+    }
+
+    public synchronized String getTekst(){
+      return tempOkt.getTekst(); 
+    }
+    
+    public synchronized void setDato(Date nyDato){
+      tempOkt.setDato(nyDato);
+    }
+    
+    public synchronized void setVarighet(int enVarighet){
+      tempOkt.setVarighet(enVarighet);
+    }
+   
+    public synchronized void setKategori(String enkategori){
+      tempOkt.setKategori(enkategori);    
+    }
+    
+    public synchronized void setTekst(String enTekst){
+      tempOkt.setTekst(enTekst);
+    }
     
     public String englishAction(){
         System.out.println("her er jeg");
