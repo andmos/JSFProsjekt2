@@ -56,6 +56,7 @@ public class TreningsOkt implements Serializable {
      dato = enDato; 
     }
     
+    
     public synchronized void setVarighet(int enVarighet){    
         varighet = enVarighet;
     }

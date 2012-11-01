@@ -70,6 +70,7 @@ public class regtreningBean implements Serializable {
               tempOkt.nullstill();
           }
           
+          
           int indeks = tabelldata.size()-1;
        //   while(indeks >= 0){
               System.out.println("jeg er inn");
