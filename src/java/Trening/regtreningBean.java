@@ -41,6 +41,10 @@ public class regtreningBean implements Serializable {
           oversikt.setBruker(nyBruker);
       }
       
+      public synchronized double getSum(){
+          return oversikt.getSum();
+      }
+      
       public synchronized TreningsOkt getTempOkt(){
           return tempOkt;
       }

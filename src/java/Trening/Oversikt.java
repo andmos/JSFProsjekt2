@@ -8,10 +8,6 @@ public class Oversikt {
     private String bruker = "";
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
     
-    public Oversikt(){
-        //bruker - innlogging
-    }
-
     public String getBruker() {
         return bruker;
     }
@@ -21,6 +17,18 @@ public class Oversikt {
     
     public ArrayList<TreningsOkt>getAlleOkter() {
         return alleOkt;
+    }
+    
+    public double getSum(){
+        double sum = 0.0;
+        for(TreningsOkt enOkt : alleOkt){
+            sum += enOkt.getVarighet();
+        }
+        return sum;
+    }
+    
+    public int getAntallOkter(){
+        return alleOkt.size();
     }
 
 //    public int getAlleOkterEnMnd() {
