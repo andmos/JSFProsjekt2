@@ -65,8 +65,9 @@ public class TreningsOkt implements Serializable {
       
     }
     
-    public synchronized void setTekst(String enTekst){
-      tekst = enTekst; 
+    public synchronized String setTekst(String enTekst){
+      tekst = enTekst;
+      return tekst;
     }
     
     public final synchronized void nullstill() {
