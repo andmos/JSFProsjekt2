@@ -69,7 +69,7 @@ public class regtreningBean implements Serializable {
               tabelldata.add(new TreningsOktStatus(nyOkt));
               tempOkt.nullstill();
           }
-          
+   /*       
           for (int i = 0; i < tabelldata.size(); i++) {
             System.out.println(tabelldata.get(i).getSkalSlettes() + " her er noen verdier");
           if((tabelldata.get(i).getSkalSlettes())){
@@ -79,19 +79,18 @@ public class regtreningBean implements Serializable {
           }
         }
           
-          
-//          int indeks = tabelldata.size()-1;
-//       //   while(indeks >= 0){
-//              System.out.println("jeg er inn");
-//              TreningsOktStatus tos = tabelldata.get(indeks);
-//              System.out.println("blabla");
-//              if(tos.getSkalSlettes()){
-//                  System.out.println("indeks =" + indeks);
-//                  oversikt.slettOkt(tos.getTreningsOkt());
-//                  tabelldata.remove(indeks);
-//              }
-//              indeks--;
-//       //   }
+     */     
+          int indeks = tabelldata.size()-1;
+                  
+          while(indeks >= 0){
+              TreningsOktStatus tos = tabelldata.get(indeks);
+              if(tos.getSkalSlettes()){
+                 System.out.println("indeks =" + indeks);
+                oversikt.slettOkt(tos.getTreningsOkt());
+                  tabelldata.remove(indeks);
+              }
+              indeks--;
+          }
       }
       
       

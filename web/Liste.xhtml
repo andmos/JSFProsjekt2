@@ -18,7 +18,7 @@ and open the template in the editor.
         <h3>#{tekster.oversikt}</h3>
       </ui:define>
         <ui:define name="content">
-      <h:form>
+     
       <br></br>
       <h:dataTable value="#{reg.tabelldata}" var="enOkt"
                    styleClass="standard" headerClass="hode" rowClasses="oddeRad, likeRad" footerClass="fot"
@@ -85,22 +85,20 @@ and open the template in the editor.
             <h:outputText value="#{tekster.slett}"
                           styleClass="lol"/>
           </f:facet>
-          <h:selectBooleanCheckbox value="#{enOkt.setSkalSlettes(false)}" />
+          <h:selectBooleanCheckbox value="#{enOkt.skalSlettes}" />
         </h:column>
       </h:dataTable>
       
       
-      
-    </h:form>
         </ui:define>
       <ui:define name="bottom">
-        <h:form>
+        
           
             
           
         <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
         <h:commandButton value="#{tekster.oppdater}" action="#{reg.oppdater()}"/>
-        </h:form>
+        
       </ui:define>
       </ui:composition>
   </h:body>

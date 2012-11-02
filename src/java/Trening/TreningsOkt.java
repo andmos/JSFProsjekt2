@@ -1,11 +1,10 @@
 package Trening;
 
-import java.io.Serializable; 
 import java.util.Date; 
 
 
 
-public class TreningsOkt implements Serializable {
+public class TreningsOkt {
     private int oktnr = 0; 
     private Date dato; 
     private int varighet; 
@@ -66,9 +65,8 @@ public class TreningsOkt implements Serializable {
       
     }
     
-    public synchronized String setTekst(String enTekst){
+    public synchronized void setTekst(String enTekst){
       tekst = enTekst;
-      return tekst;
     }
     
     public final synchronized void nullstill() {
