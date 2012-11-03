@@ -96,11 +96,11 @@ public class regtreningBean implements Serializable {
       
       
       public synchronized  int getOktnr(){
-        return tempOkt.getOktnr(); 
+        return oversikt.getOktnummer(); 
       }
       
-      public synchronized void setOktnr(){
-        tempOkt.setOktnr();
+      public synchronized void setOktnr(int nyttNr){
+        oversikt.setOktnummer(nyttNr);
       }
       
       public synchronized Date getDato(){

@@ -5,28 +5,25 @@ import java.util.Date;
 
 
 public class TreningsOkt {
-    private int oktnr = 0; 
+    
     private Date dato; 
     private int varighet; 
     private String kategori; 
     private String tekst;
+ 
     
     public TreningsOkt(Date dato, String kategori, String tekst, int varighet){
       this.dato=dato;
-      this.kategori=kategori;
-      this.oktnr=oktnr;
+      this.kategori=kategori; 
       this.varighet = varighet;
       this.tekst=tekst;
-      oktnr++;
+     
     }
     
     public TreningsOkt(){
         nullstill();
     }
     
-    public synchronized int getOktnr(){
-      return oktnr; 
-    }
     
     public synchronized Date getDato(){
       return dato; 
@@ -46,10 +43,7 @@ public class TreningsOkt {
       return tekst; 
     }
     
-    public synchronized void setOktnr(){
-      // oktnr ++;  
-      
-    }
+   
     
     public synchronized void setDato(Date enDato){
      dato = enDato; 
@@ -70,7 +64,7 @@ public class TreningsOkt {
     }
     
     public final synchronized void nullstill() {
-      oktnr = 0;
+     
       dato = new Date();
       tekst = "";
       varighet = 0;

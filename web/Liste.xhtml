@@ -23,6 +23,19 @@ and open the template in the editor.
       <h:dataTable value="#{reg.tabelldata}" var="enOkt"
                    styleClass="standard" headerClass="hode" rowClasses="oddeRad, likeRad" footerClass="fot"
                    rendered="#{reg.dataFins}">
+      
+              <!-- Kolonne øktnummer -->
+        <h:column>
+          <f:facet name="header">
+          <h:outputText value="#{tekster.oktnr}"/>
+            
+          </f:facet>
+          <h:outputText value="#{reg.oktnr}"
+                       styleClass="lol"/>
+          
+        </h:column>
+        
+        
         <!-- Kolonne Dato -->
         <h:column>
           <f:facet name="header">
@@ -49,6 +62,9 @@ and open the template in the editor.
             <h:outputText value="#{reg.antallOkter}"/>
           </f:facet>
         </h:column>
+     
+       
+        
         
         <!-- Kolonne tekst -->
         <h:column>
@@ -78,6 +94,9 @@ and open the template in the editor.
             </h:outputText>
           </f:facet>
         </h:column>
+        
+      
+        
         
         <!-- Kolonne sletting -->
         <h:column>

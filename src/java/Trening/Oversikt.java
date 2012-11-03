@@ -11,13 +11,24 @@ public class Oversikt implements Serializable{
     
     private String bruker = "";
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
+    private int oktnummer = 0; 
     
     public String getBruker() {
         return bruker;
     }
+    public int getOktnummer(){
+        return oktnummer;
+    }
+    public void setOktnummer(int nummer){
+        oktnummer = nummer; 
+    }
+    
+    
     public void setBruker(String nyBruker){
         bruker = nyBruker;
     }
+   
+    
     
     public ArrayList<TreningsOkt>getAlleOkter() {
         return alleOkt;
@@ -45,6 +56,7 @@ public class Oversikt implements Serializable{
     public void regNyOkt(TreningsOkt ny){
         if( ny != null){
             alleOkt.add(ny);
+            oktnummer ++;  
         }
     }
      
