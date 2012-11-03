@@ -2,8 +2,6 @@ package Trening;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection; 
-import java.util.List; 
 
 
 
@@ -48,10 +46,6 @@ public class Oversikt implements Serializable{
     public int getAntallOkter(){
         return alleOkt.size();
     }
-
-//    public int getAlleOkterEnMnd() {
-//        return alleOkterEnMnd;
-//    }
     
     public void regNyOkt(TreningsOkt ny){
         if( ny != null){

@@ -69,17 +69,7 @@ public class regtreningBean implements Serializable {
               tabelldata.add(new TreningsOktStatus(nyOkt));
               tempOkt.nullstill();
           }
-   /*       
-          for (int i = 0; i < tabelldata.size(); i++) {
-            System.out.println(tabelldata.get(i).getSkalSlettes() + " her er noen verdier");
-          if((tabelldata.get(i).getSkalSlettes())){
-            TreningsOktStatus tos = tabelldata.get(i);
-            oversikt.slettOkt(tos.getTreningsOkt());
-            tabelldata.remove(i);
-          }
-        }
           
-     */     
           int indeks = tabelldata.size()-1;
                   
           while(indeks >= 0){
