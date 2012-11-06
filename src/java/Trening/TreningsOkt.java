@@ -10,14 +10,12 @@ public class TreningsOkt {
     private int varighet; 
     private String kategori; 
     private String tekst;
- 
     
     public TreningsOkt(Date dato, String kategori, String tekst, int varighet){
       this.dato=dato;
       this.kategori=kategori; 
       this.varighet = varighet;
       this.tekst=tekst;
-     
     }
     
     public TreningsOkt(){
@@ -69,4 +67,7 @@ public class TreningsOkt {
       tekst = "";
       varighet = 0;
   }
+    
+    
+
 }
