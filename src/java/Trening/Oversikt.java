@@ -79,6 +79,22 @@ public class Oversikt implements Serializable{
     }
     
     public void regNyOkt(TreningsOkt ny){
+      Date dato = ny.getDato();
+      int varighet = ny.getVarighet();
+      String tekst = ny.getTekst(); 
+      String kategori = ny.getKategori(); 
+      
+      PreparedStatement settinn = null; 
+      String insert = "insert into trening " + "VALUES ('"+dato+"','"+varighet+"','"+kategori+"','"+tekst+"','"+bruker+"')";
+      apneForbindelse();
+        try{
+          settinn = forbindelse.prepareStatement(insert);
+        }catch(SQLException e){
+          Opprydder.skrivMelding(e, "RegOkt");
+        }finally{
+          Opprydder.lukkSetning(settinn);
+        }
+        lukkForbindelse();
         if( ny != null){
             alleOkt.add(ny);
            
@@ -107,7 +123,13 @@ public class Oversikt implements Serializable{
        
      }
    
-      
+      public static void main(String[] args) {
+        Oversikt test = new Oversikt(); 
+        for (int i = 0; i < test.alleOkt.size(); i++) {
+          System.out.println(test.alleOkt.get(i).getTekst());
+          
+        }
+      }
     
     
 }
