@@ -5,11 +5,12 @@ import java.util.Date;
 
 
 public class TreningsOkt {
-    
+    private int oktNr;
     private Date dato; 
     private int varighet; 
     private String kategori; 
     private String tekst;
+    private static int lopenummer = 0; 
     
     public TreningsOkt(Date dato, String kategori, String tekst, int varighet){
       this.dato=dato;
@@ -18,8 +19,23 @@ public class TreningsOkt {
       this.tekst=tekst;
     }
     
+    
     public TreningsOkt(){
         nullstill();
+    }
+    
+    public static int setLopenummer(){
+      lopenummer++;
+      return lopenummer; 
+      
+    }
+    
+    public synchronized int getOktNr(){
+      return oktNr;
+    }
+    
+    public synchronized void setOktNr(int nyttNr){
+      oktNr = nyttNr;
     }
     
     
