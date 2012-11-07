@@ -89,6 +89,7 @@ public class Oversikt implements Serializable{
       apneForbindelse();
         try{
           settinn = forbindelse.prepareStatement(insert);
+          setning.executeUpdate(insert);
         }catch(SQLException e){
           Opprydder.skrivMelding(e, "RegOkt");
         }finally{
