@@ -6,13 +6,14 @@ import java.sql.*;
 import java.util.Date; 
 
 public class Oversikt implements Serializable{
-    
+   // Databasevariabler  
+   
     private String dbdriver = "org.apache.derby.jdbc.ClientDriver";
     private String dbnavn = "jdbc:derby://localhost:1527/waplj_prosjekt;user=waplj;password=waplj";
     private Connection forbindelse = null; 
     Statement setning = null; 
     ResultSet res = null; 
-    
+   // Klassevariabler
     private String bruker = "";
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
     
