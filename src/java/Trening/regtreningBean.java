@@ -79,9 +79,12 @@ public class regtreningBean implements Serializable {
                  System.out.println("indeks =" + indeks);
                 oversikt.slettOkt(tos.getTreningsOkt());
                   tabelldata.remove(indeks);
+              }else{
+                oversikt.oppdaterOkt(tos.getTreningsOkt());
               }
               indeks--;
           }
+          
       }
      
       public synchronized Date getDato(){

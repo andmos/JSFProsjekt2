@@ -143,6 +143,35 @@ public class Oversikt implements Serializable{
         
     }
      
+    public void oppdaterOkt(TreningsOkt valgt){
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String datodb  = formatter.format(valgt.getDato());
+        
+        
+      try{
+        apneForbindelse();
+        setning = forbindelse.prepareStatement("UPDATE trening SET dato=?, varighet=?, kategorinavn=?, tekst=? WHERE oktnr=?");
+        setning.setString(1, datodb); 
+        setning.setInt(2, valgt.getVarighet());
+        setning.setString(3, valgt.getKategori());
+        setning.setString(4, valgt.getTekst());
+        setning.setInt(5, valgt.getOktNr());
+        setning.executeUpdate(); 
+        
+        
+      }catch(SQLException e){
+        System.out.println("Noe gikk galt med oppdateringen" + e);
+      
+      }finally{
+        Opprydder.lukkSetning(setning);
+        lukkForbindelse();
+
+      }
+        
+    }
+    
+    
     public void slettOkt(TreningsOkt valgt){
       
 
