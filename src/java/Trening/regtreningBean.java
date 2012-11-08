@@ -66,7 +66,6 @@ public class regtreningBean implements Serializable {
       public synchronized void oppdater(){
           if(!tempOkt.getTekst().trim().equals("")){
               TreningsOkt nyOkt = new TreningsOkt(tempOkt.getDato(), tempOkt.getKategori(), tempOkt.getTekst(), tempOkt.getVarighet());
-              nyOkt.setOktNr(TreningsOkt.setLopenummer());
               oversikt.regNyOkt(nyOkt);
               tabelldata.add(new TreningsOktStatus(nyOkt));
               tempOkt.nullstill();

@@ -32,6 +32,7 @@ public class Oversikt implements Serializable{
            String enKategori = res.getString("kategorinavn"); 
            String tekst = res.getString("tekst"); 
            TreningsOkt eiOkt = new TreningsOkt(enDato, enKategori, tekst, enVarighet); 
+           eiOkt.setOktNr(etOktnr);
            alleOkt.add(eiOkt);
          }
      
@@ -103,21 +104,29 @@ public class Oversikt implements Serializable{
       String tekst = ny.getTekst(); 
       String kategori = ny.getKategori(); 
       System.out.println(kategori);
-      
-      
       try{
           apneForbindelse();
           forbindelse.setAutoCommit(false);
-         // String insert = "insert into trening (dato, varighet, kategorinavn, tekst, brukernavn)" + "VALUES (DATE('"+datodb+"'),'"+varighet+"','"+kategori+"','"+tekst+"','"+bruker+"')";
           setning = forbindelse.prepareStatement("insert into trening (dato, varighet, kategorinavn, tekst, brukernavn)" + "VALUES (DATE('"+datodb+"'),?,?,?,?)");
           setning.setInt(1, varighet);
           setning.setString(2, kategori);
           setning.setString(3, tekst);
           setning.setString(4, bruker);
           setning.executeUpdate();
+          Opprydder.lukkSetning(setning); 
+          
+          setning = forbindelse.prepareStatement("select max(oktnr)from trening"); 
+          res = setning.executeQuery();
+          int tall = 0;
+          while(res.next()){
+            tall = res.getInt(1);
+          }
+          ny.setOktNr(tall);
           if( ny != null){
             alleOkt.add(ny);
-           
+         
+            
+            
         }
           
         
@@ -191,13 +200,6 @@ public class Oversikt implements Serializable{
      }
      
      
-      public static void main(String[] args) {
-        Oversikt test = new Oversikt(); 
-        for (int i = 0; i < test.alleOkt.size(); i++) {
-          System.out.println(test.alleOkt.get(i).getTekst());
-          
-        }
-      }
     
     
 }
