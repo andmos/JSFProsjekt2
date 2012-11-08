@@ -11,7 +11,7 @@ public class Oversikt implements Serializable{
     private String dbdriver = "org.apache.derby.jdbc.ClientDriver";
     private String dbnavn = "jdbc:derby://localhost:1527/waplj_prosjekt;user=waplj;password=waplj";
     private Connection forbindelse = null; 
-    Statement setning = null; 
+    PreparedStatement setning = null; 
     ResultSet res = null; 
    // Klassevariabler
     private String bruker = "";
@@ -22,8 +22,8 @@ public class Oversikt implements Serializable{
       try{
         Class.forName(dbdriver); 
         forbindelse = DriverManager.getConnection(dbnavn); 
-        setning = forbindelse.createStatement(); 
-        res = setning.executeQuery("select * from trening"); 
+        setning = forbindelse.prepareStatement("select * from trening"); 
+        res = setning.executeQuery(); 
          while(res.next()){
            Date enDato = res.getDate("Dato");
            int etOktnr = res.getInt("oktnr"); 
@@ -85,22 +85,28 @@ public class Oversikt implements Serializable{
       String tekst = ny.getTekst(); 
       String kategori = ny.getKategori(); 
       
-      PreparedStatement settinn = null; 
-      String insert = "insert into trening " + "VALUES ('"+dato+"','"+varighet+"','"+kategori+"','"+tekst+"','"+bruker+"')";
-      apneForbindelse();
+       
         try{
-          settinn = forbindelse.prepareStatement(insert);
+          apneForbindelse();
+          forbindelse.setAutoCommit(false);
+          String insert = "insert into trening (dato, varighet, kategorinavn, tekst, brukernavn)" + "VALUES (DATE('"+dato+"'),'"+varighet+"','"+kategori+"','"+tekst+"','"+bruker+"')";
+          setning = forbindelse.prepareStatement(insert);
           setning.executeUpdate(insert);
-        }catch(SQLException e){
-          Opprydder.skrivMelding(e, "RegOkt");
-        }finally{
-          Opprydder.lukkSetning(settinn);
-        }
-        lukkForbindelse();
-        if( ny != null){
+          if( ny != null){
             alleOkt.add(ny);
            
         }
+          
+        
+        }catch(SQLException e){
+          Opprydder.skrivMelding(e, "RegOkt");
+        }finally{
+          Opprydder.lukkSetning(setning);
+          lukkForbindelse();
+          Opprydder.settAutoCommit(forbindelse);
+        }
+        
+        
     }
      
     public void slettOkt(TreningsOkt valgt){
@@ -125,6 +131,25 @@ public class Oversikt implements Serializable{
        
      }
    
+     public ArrayList<String> Kategorier(){
+       ArrayList<String> kategorier = new ArrayList<String>(); 
+       try{
+         apneForbindelse(); 
+         setning = forbindelse.prepareStatement("select kategorinavn from kategori"); 
+         res = setning.executeQuery();
+         while(res.next()){
+           kategorier.add(res.getString(1));
+         }
+       }catch(SQLException e){
+         System.out.println("Noe gikk galt i kategorihentingen" + e);
+       }finally{
+         Opprydder.lukkSetning(setning);
+         lukkForbindelse(); 
+       }
+       return kategorier; 
+     }
+     
+     
       public static void main(String[] args) {
         Oversikt test = new Oversikt(); 
         for (int i = 0; i < test.alleOkt.size(); i++) {

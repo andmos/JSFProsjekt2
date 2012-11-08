@@ -32,12 +32,9 @@
             <tr>
               <td>#{tekster.kategori}</td>
               <td>
-                    <h:selectOneMenu id="Type" value="#{reg.kategori}">
-                      <f:selectItem itemLabel="#{tekster.styrke}" itemValue="#{tekster.styrke}" />
-                      <f:selectItem itemLabel="#{tekster.kondisjon}" itemValue="#{tekster.kondisjon}" />
-                      <f:selectItem itemLabel="#{tekster.intervall}" itemValue="#{tekster.intervall}" />
-                      <f:selectItem itemLabel="#{tekster.kombinasjon}" itemValue="#{tekster.kombinasjon}" />
-                      <f:selectItem itemLabel="#{tekster.andre}" itemValue="#{tekster.andre}" />
+                <h:selectOneMenu value="#{reg.tempOkt.kategori}">
+                  <f:selectItem value="#{reg.kategorier}" var ="c"/>
+                      
                     </h:selectOneMenu> 
               </td>
             </tr>

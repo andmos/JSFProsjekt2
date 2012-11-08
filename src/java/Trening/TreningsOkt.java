@@ -69,7 +69,7 @@ public class TreningsOkt {
     }
    
     public synchronized void setKategori(String enKategori){
-      kategori = enKategori; 
+      this.kategori = enKategori; 
       
     }
     
@@ -83,6 +83,7 @@ public class TreningsOkt {
       tekst = "";
       varighet = 0;
   }
+    
     
     
 

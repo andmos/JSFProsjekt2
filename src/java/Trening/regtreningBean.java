@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.Locale;
 import javax.faces.context.FacesContext;
 import java.util.List;
+import javax.annotation.PostConstruct;
         
         
 @Named ("reg") 
@@ -83,13 +84,7 @@ public class regtreningBean implements Serializable {
               indeks--;
           }
       }
-      
-      
-      
-      
-      
-      
-      
+    
       public synchronized Date getDato(){
       return tempOkt.getDato(); 
     }
@@ -98,9 +93,7 @@ public class regtreningBean implements Serializable {
       return tempOkt.getVarighet(); 
     }
     
-    public synchronized String getKategori(){
-      return tempOkt.getKategori(); 
-    }
+  
 
     public synchronized String getTekst(){
       return tempOkt.getTekst(); 
@@ -122,6 +115,11 @@ public class regtreningBean implements Serializable {
       tempOkt.setTekst(enTekst);
     }
     
+    public synchronized ArrayList<String> getKategorier(){
+        return oversikt.Kategorier(); 
+    }
+    
+    
     public String englishAction(){
         System.out.println("her er jeg");
         FacesContext context = FacesContext.getCurrentInstance();
@@ -134,6 +132,21 @@ public class regtreningBean implements Serializable {
         context.getViewRoot().setLocale(new Locale("no"));
         return null;
     }
+    
+    @PostConstruct 
+    public synchronized void setDatatable(){
+      List<TreningsOktStatus> temp = Collections.synchronizedList(new ArrayList<TreningsOktStatus>()); 
+     for(TreningsOkt t : oversikt.getAlleOkter()){
+       temp.add(new TreningsOktStatus(t));
+     
+     }
+     tabelldata = temp; 
+    }
+    
+    
+    
+    
+    
 }
 
 
