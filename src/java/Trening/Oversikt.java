@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.sql.*; 
 import java.util.Date; 
+import java.text.SimpleDateFormat; 
 
 public class Oversikt implements Serializable{
    // Databasevariabler  
@@ -14,7 +15,7 @@ public class Oversikt implements Serializable{
     PreparedStatement setning = null; 
     ResultSet res = null; 
    // Klassevariabler
-    private String bruker = "";
+    private String bruker = "anne";
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
     
     
@@ -65,13 +66,27 @@ public class Oversikt implements Serializable{
     }
     
     public double getSum(){
-        double sum = 0.0;
-        int antall = 0;
-        for(TreningsOkt enOkt : alleOkt){
-            sum += enOkt.getVarighet();
-            antall++;
-        }
-        return sum/antall;
+       double sum = 0; 
+       int varighet = 0; 
+       try{
+         apneForbindelse(); 
+         String settning = "select SUM(varighet), count(oktnr) FROM trening"; 
+         setning = forbindelse.prepareStatement(settning); 
+         res = setning.executeQuery(); 
+         while(res.next()){
+           varighet = res.getInt(1); 
+           sum = res.getDouble(2); 
+         }
+         
+       }catch(SQLException e){
+         System.out.println("Noe gikk galt med snittet " + e);
+       }finally{
+        Opprydder.lukkSetning(setning);
+        Opprydder.settAutoCommit(forbindelse);
+        lukkForbindelse(); 
+       }
+       return (double) varighet / sum; 
+    
     }
     
     
@@ -80,18 +95,26 @@ public class Oversikt implements Serializable{
     }
     
     public void regNyOkt(TreningsOkt ny){
-      Date dato = ny.getDato();
+    
+      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");      
+      Date dato = ny.getDato(); 
+      String datodb  = formatter.format(dato);
       int varighet = ny.getVarighet();
       String tekst = ny.getTekst(); 
       String kategori = ny.getKategori(); 
+      System.out.println(kategori);
       
-       
-        try{
+      
+      try{
           apneForbindelse();
           forbindelse.setAutoCommit(false);
-          String insert = "insert into trening (dato, varighet, kategorinavn, tekst, brukernavn)" + "VALUES (DATE('"+dato+"'),'"+varighet+"','"+kategori+"','"+tekst+"','"+bruker+"')";
-          setning = forbindelse.prepareStatement(insert);
-          setning.executeUpdate(insert);
+         // String insert = "insert into trening (dato, varighet, kategorinavn, tekst, brukernavn)" + "VALUES (DATE('"+datodb+"'),'"+varighet+"','"+kategori+"','"+tekst+"','"+bruker+"')";
+          setning = forbindelse.prepareStatement("insert into trening (dato, varighet, kategorinavn, tekst, brukernavn)" + "VALUES (DATE('"+datodb+"'),?,?,?,?)");
+          setning.setInt(1, varighet);
+          setning.setString(2, kategori);
+          setning.setString(3, tekst);
+          setning.setString(4, bruker);
+          setning.executeUpdate();
           if( ny != null){
             alleOkt.add(ny);
            
@@ -99,18 +122,37 @@ public class Oversikt implements Serializable{
           
         
         }catch(SQLException e){
+          System.out.println("noe gikk galt med REGISTRERINGEN. " + e);
           Opprydder.skrivMelding(e, "RegOkt");
         }finally{
           Opprydder.lukkSetning(setning);
-          lukkForbindelse();
           Opprydder.settAutoCommit(forbindelse);
+          lukkForbindelse();
+          
         }
         
         
     }
      
     public void slettOkt(TreningsOkt valgt){
-        
+      
+
+      try{
+          apneForbindelse(); 
+          forbindelse.setAutoCommit(false);
+          String slett = "delete from trening WHERE oktnr = ?";
+          setning = forbindelse.prepareStatement(slett);
+          setning.setInt(1, valgt.getOktNr());
+          alleOkt.remove(valgt);
+          setning.executeUpdate();
+      
+      }catch(SQLException e){
+          System.out.println("Noe gikk galt med slettingen " + e);
+        }finally{
+        Opprydder.lukkSetning(setning);
+        Opprydder.settAutoCommit(forbindelse);
+        lukkForbindelse(); 
+    }
      }
       
      private void apneForbindelse(){
@@ -118,6 +160,7 @@ public class Oversikt implements Serializable{
          forbindelse = DriverManager.getConnection(dbnavn); 
          System.out.println("Databaseforbindelse oppretta");
        }catch(SQLException e){
+         System.out.println("noe gikk galt med forbindelsen vi opprettet." + e);
          Opprydder.skrivMelding(e, "Konstruktøren");
          Opprydder.lukkForbindelse(forbindelse);
        }
