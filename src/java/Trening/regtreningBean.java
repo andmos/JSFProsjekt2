@@ -84,7 +84,7 @@ public class regtreningBean implements Serializable {
               indeks--;
           }
       }
-    
+     
       public synchronized Date getDato(){
       return tempOkt.getDato(); 
     }

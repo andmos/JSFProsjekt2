@@ -110,9 +110,7 @@ public class Oversikt implements Serializable{
     }
      
     public void slettOkt(TreningsOkt valgt){
-        System.out.println("hit kom jeg");
-        alleOkt.remove(valgt);
-        System.out.println("har sletta");
+        
      }
       
      private void apneForbindelse(){
