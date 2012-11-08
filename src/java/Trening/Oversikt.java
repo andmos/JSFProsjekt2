@@ -7,14 +7,15 @@ import java.util.Date;
 import java.text.SimpleDateFormat; 
 
 public class Oversikt implements Serializable{
-   // Databasevariabler  
-   
+  
+    // Databasevariabler  
     private String dbdriver = "org.apache.derby.jdbc.ClientDriver";
     private String dbnavn = "jdbc:derby://localhost:1527/waplj_prosjekt;user=waplj;password=waplj";
     private Connection forbindelse = null; 
     PreparedStatement setning = null; 
     ResultSet res = null; 
-   // Klassevariabler
+   
+    // Klassevariabler
     private String bruker = "anne";
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
     
@@ -39,7 +40,7 @@ public class Oversikt implements Serializable{
       }catch(SQLException e ){
            System.out.println(e + " Noe gikk galt i databaseforbindelsen");
       }catch(ClassNotFoundException k){
-          System.out.println("noe gikk galt med driveren");
+          System.out.println("noe gikk galt med klassen");
       }
       
         finally{
