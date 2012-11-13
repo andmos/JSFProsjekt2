@@ -27,7 +27,7 @@ import javax.annotation.Resource;
 import javax.faces.component.*;
 import javax.faces.application.*;
         
-@Named ("reg") 
+@Named ("passord") 
 @SessionScoped
 public class PasswordValidationBean implements Serializable {
   private String input1;

@@ -5,12 +5,18 @@ import java.util.ArrayList;
 import java.sql.*; 
 import java.util.Date; 
 import java.text.SimpleDateFormat; 
+import javax.annotation.Resource;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class Oversikt implements Serializable{
   
+    @Resource(name = "jdbc/waplj_prosjekt")
+    private DataSource ds;
+   
     // Databasevariabler  
-    private String dbdriver = "org.apache.derby.jdbc.ClientDriver";
-    private String dbnavn = "jdbc:derby://localhost:1527/waplj_prosjekt;user=waplj;password=waplj";
+  
     private Connection forbindelse = null; 
     PreparedStatement setning = null; 
     ResultSet res = null; 
@@ -22,8 +28,8 @@ public class Oversikt implements Serializable{
     
     public Oversikt(){
       try{
-        Class.forName(dbdriver); 
-        forbindelse = DriverManager.getConnection(dbnavn); 
+        ds = (DataSource) new InitialContext().lookup("jdbc/waplj_prosjekt");
+        forbindelse = ds.getConnection(); 
         setning = forbindelse.prepareStatement("select * from trening"); 
         res = setning.executeQuery(); 
          while(res.next()){
@@ -37,11 +43,12 @@ public class Oversikt implements Serializable{
            alleOkt.add(eiOkt);
          }
      
-      }catch(SQLException e ){
+      }catch(SQLException e){
            System.out.println(e + " Noe gikk galt i databaseforbindelsen");
-      }catch(ClassNotFoundException k){
-          System.out.println("noe gikk galt med klassen");
+      }catch(NamingException k){
+          System.out.println("Noe gikk galt med kastinga på NAVN" + k);
       }
+      
       
         finally{
           Opprydder.lukkResSet(res); 
@@ -195,16 +202,7 @@ public class Oversikt implements Serializable{
     }
      }
       
-     private void apneForbindelse(){
-       try{
-         forbindelse = DriverManager.getConnection(dbnavn); 
-         System.out.println("Databaseforbindelse oppretta");
-       }catch(SQLException e){
-         System.out.println("noe gikk galt med forbindelsen vi opprettet." + e);
-         Opprydder.skrivMelding(e, "Konstruktøren");
-         Opprydder.lukkForbindelse(forbindelse);
-       }
-     }
+     
      
      private void lukkForbindelse(){
        System.out.println("lukker");
@@ -230,7 +228,19 @@ public class Oversikt implements Serializable{
        return kategorier; 
      }
      
-     
+     public void apneForbindelse(){
+        try{ if(ds == null){
+            throw new SQLException("ingen datasource funnet"); 
+        }
+            forbindelse = ds.getConnection(); 
+            System.out.println("Vellykket forbindelse til datastore ");
+            
+        
+        }catch(Exception e) {
+            System.out.println("Feil med databaseforbindelse " + e);
+        }
+    }
+    
     
     
 }
