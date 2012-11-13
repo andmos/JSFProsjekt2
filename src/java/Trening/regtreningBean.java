@@ -161,7 +161,14 @@ public class regtreningBean implements Serializable {
         }
     }
     
+    public synchronized String loggInn(){
+        return oversikt.logginn();
+    }
     
+    public synchronized String getPassord(){
+        return oversikt.getPassord();
+    }
+            
     
 }
 
