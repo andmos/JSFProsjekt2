@@ -23,6 +23,7 @@ public class Oversikt implements Serializable{
    
     // Klassevariabler
     private String bruker = "anne";
+    private String passord = "";
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
     
     

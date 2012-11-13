@@ -17,5 +17,6 @@
                 <var>tekster</var>
             </resource-bundle>
         </application>
+        
 
 </faces-config>
