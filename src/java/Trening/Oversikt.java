@@ -81,7 +81,7 @@ public class Oversikt implements Serializable{
          }
          
        }catch(SQLException e){
-         System.out.println("Noe gikk galt med snittet " + e);
+         System.out.println("Noe gikk galt med gjennomsnittet " + e);
        }finally{
         Opprydder.lukkSetning(setning);
         Opprydder.settAutoCommit(forbindelse);

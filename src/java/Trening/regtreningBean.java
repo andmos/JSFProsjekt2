@@ -1,10 +1,9 @@
 
 package Trening;
 
-// FIRST MAKE IT WORK, THAN MAKE IT PRETTY.
-
-
 import java.io.Serializable; 
+import java.sql.Connection;
+import java.sql.*; 
 import javax.inject.Inject; 
 import javax.enterprise.context.SessionScoped; 
 import java.util.ArrayList; 
@@ -16,16 +15,20 @@ import java.util.Locale;
 import javax.faces.context.FacesContext;
 import java.util.List;
 import javax.annotation.PostConstruct;
-        
+import javax.sql.DataSource; 
+import javax.annotation.Resource; 
         
 @Named ("reg") 
 @SessionScoped
 
 public class regtreningBean implements Serializable {
+     
+    @Resource(name= "jdbc/waplj_prosjekt") DataSource ds;   
+     
      private TreningsOkt tempOkt = new TreningsOkt(); 
      private Oversikt oversikt = new Oversikt();
      private List<TreningsOktStatus> tabelldata = Collections.synchronizedList(new ArrayList<TreningsOktStatus>());
-     
+     private Connection forbindelse; 
       public regtreningBean(){
         
       }
@@ -145,7 +148,18 @@ public class regtreningBean implements Serializable {
      tabelldata = temp; 
     }
     
-    
+    public void apneForbindelse(){
+        try{ if(ds == null){
+            throw new SQLException("ingen datasource funnet"); 
+        }
+            forbindelse = ds.getConnection(); 
+            System.out.println("Vellykket forbindelse til datastore ");
+            
+        
+        }catch(Exception e) {
+            System.out.println("Feil med databaseforbindelse " + e);
+        }
+    }
     
     
     
