@@ -168,6 +168,10 @@ public class regtreningBean implements Serializable {
     public synchronized String getPassord(){
         return oversikt.getPassord();
     }
+    
+    public synchronized void setPassord(String etPassord){
+        oversikt.setPassord(etPassord);
+    }
             
     
 }
