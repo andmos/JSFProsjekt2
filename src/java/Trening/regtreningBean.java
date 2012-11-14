@@ -161,19 +161,25 @@ public class regtreningBean implements Serializable {
         }
     }
     
-    public synchronized String loggInn(){
-        return oversikt.logginn();
+    public synchronized void setGammel(String gammel){
+        oversikt.setGammel(gammel);
     }
     
-    public synchronized String getPassord(){
-        return oversikt.getPassord();
+    public synchronized String getGammel(){
+        return oversikt.getGammel();
+    }
+     public synchronized String getNytt(){
+         return oversikt.getNytt(); 
+     }
+     public synchronized void setNytt(String ny){
+         oversikt.setNytt(ny); 
+     }
+     public synchronized String settPassord(){
+         return oversikt.setPassord(); 
+     }
+   
     }
     
-    public synchronized void setPassord(String etPassord){
-        oversikt.setPassord(etPassord);
-    }
-            
-    
-}
+
 
 

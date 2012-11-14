@@ -28,8 +28,9 @@ public class Oversikt implements Serializable{
    
     // Klassevariabler
     private String bruker = "";
-    private String passord = "";
     private boolean loggetInn;    
+    private String gammelPassord=""; 
+    private String nytt = ""; 
     
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
     
@@ -77,13 +78,9 @@ public class Oversikt implements Serializable{
         bruker = nyBruker;
     }
 
-    public String getPassord() {
-        return passord;
-    }
+  
 
-    public void setPassord(String passord) {
-        this.passord = passord;
-    }
+  
 
         
     
@@ -246,49 +243,9 @@ public class Oversikt implements Serializable{
         }
     }
      
-     public String logginn(){
-         try{
-             doLoggInn();
-         }catch(SQLException ex){
-             System.out.println("Innlogging feil");
-             return "innloggingFeil";
-         }
-         if(loggetInn){
-             return "innlogginOk"; 
-         }else{
-             return "innlogginFeil";
-         }
-     }
-     public String loggUt(){
-         loggetInn = false;
-         return "loggUt";
-     }
+   
      
-     public void doLoggInn() throws SQLException{
-         if(ds == null) throw new SQLException("Ingen data");
-         apneForbindelse();
-         
-         try{
-             forbindelse.setAutoCommit(false);
-             boolean samla = false;
-             try{
-                 setning = forbindelse.prepareStatement("Select passord from bruker where brukernavn = ?");
-                 setning.setString(1, bruker);
-                 res = setning.executeQuery();
-                 
-                 if(!res.next()) return;
-                 String lagretPass = res.getString("passord");
-                 loggetInn = passord.equals(lagretPass.trim());
-                 
-             }catch(SQLException e){
-                 System.out.println("blabla");
-             }
-         }finally{
-             Opprydder.lukkSetning(setning);
-            Opprydder.settAutoCommit(forbindelse);
-            lukkForbindelse();
-         }
-     }
+    
         public String getName() { 
       if (bruker == null) getUserData(); 
       return bruker == null ? "" : bruker; 
@@ -304,11 +261,49 @@ public class Oversikt implements Serializable{
       HttpServletRequest request = (HttpServletRequest) requestObject;
       bruker = request.getRemoteUser();
    }
-         
+     public String getGammel(){
+         return gammelPassord; 
+     }
+     public void setGammel(String gammel){
+         gammelPassord = gammel; 
+     }
+     public String getNytt(){
+         return nytt; 
+     }
+     public void setNytt(String ny){
+         nytt = ny; 
+     }
      
-     public String setPassord(String gammel, String ny){
-         getName();
-         
+     
+     public String setPassord(){
+        
+         try{
+             apneForbindelse(); 
+             forbindelse.setAutoCommit(false);
+             setning = forbindelse.prepareStatement("select passord from bruker where brukernavn = ?"); 
+             setning.setString(1, getName());
+             setning.executeQuery();
+             String fraDb = "";  
+            while(res.next()){
+               fraDb = res.getString(1); 
+            }
+             Opprydder.lukkSetning(setning);
+             if(fraDb.equals(gammelPassord)){
+                  setning = forbindelse.prepareStatement("update passord from bruker where brukernavn = ? and passord = ?"); 
+                 setning.setString(1, getName()); 
+                 setning.setString(2, nytt);
+                 setning.executeUpdate();
+                 return "PassordOK"; 
+             }else{
+                 return "PassordFeil"; 
+             }
+         }catch(SQLException e){
+             System.out.println("Feil ved bytting av passord " + e.getMessage());
+         }finally{
+             Opprydder.lukkSetning(setning);
+             lukkForbindelse(); 
+         }
+         return "PassordFeil"; 
      }
     
     
