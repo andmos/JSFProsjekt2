@@ -13,6 +13,7 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern> 
         <url-pattern>/faces/*</url-pattern>
+       
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -27,8 +28,6 @@
     <security-constraint>
            <web-resource-collection>
                <web-resource-name>Protected Pages</web-resource-name>
-               <url-pattern> /faces/protected/* </url-pattern>
-               <url-pattern> /protected/* </url-pattern>
                <url-pattern>/*</url-pattern>
            </web-resource-collection>
            <auth-constraint>
