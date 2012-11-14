@@ -244,23 +244,12 @@ public class Oversikt implements Serializable{
     }
      
    
-     
+   private void getBrukerData(){
+        bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser(); 
+        
+   }  
     
-        public String getName() { 
-      if (bruker == null) getUserData(); 
-      return bruker == null ? "" : bruker; 
-   }
-     private void getUserData() {
-      ExternalContext context 
-         = FacesContext.getCurrentInstance().getExternalContext();
-      Object requestObject =  context.getRequest();
-      if (!(requestObject instanceof HttpServletRequest)) {
-         logger.severe("request object has type " + requestObject.getClass());
-         return;
-      }
-      HttpServletRequest request = (HttpServletRequest) requestObject;
-      bruker = request.getRemoteUser();
-   }
+   
      public String getGammel(){
          return gammelPassord; 
      }
@@ -276,12 +265,13 @@ public class Oversikt implements Serializable{
      
      
      public String setPassord(){
-        
+         getBrukerData();
+         System.out.println("METODEKALL !!!!!!!!!!!!!!!!!!!!" + bruker);
          try{
              apneForbindelse(); 
              forbindelse.setAutoCommit(false);
-             setning = forbindelse.prepareStatement("select passord from bruker where brukernavn = ?"); 
-             setning.setString(1, getName());
+             setning = forbindelse.prepareStatement("select passord from bruker where brukernavn=?"); 
+             setning.setString(1, bruker);
              setning.executeQuery();
              String fraDb = "";  
             while(res.next()){
@@ -289,8 +279,9 @@ public class Oversikt implements Serializable{
             }
              Opprydder.lukkSetning(setning);
              if(fraDb.equals(gammelPassord)){
-                  setning = forbindelse.prepareStatement("update passord from bruker where brukernavn = ? and passord = ?"); 
-                 setning.setString(1, getName()); 
+                 System.out.println("Vi kommer oss inn i IFen, det er likt");
+                 setning = forbindelse.prepareStatement("update passord from bruker where brukernavn=? and passord=?"); 
+                 setning.setString(1, bruker); 
                  setning.setString(2, nytt);
                  setning.executeUpdate();
                  return "PassordOK"; 

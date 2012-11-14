@@ -175,6 +175,8 @@ public class regtreningBean implements Serializable {
          oversikt.setNytt(ny); 
      }
      public synchronized String settPassord(){
+                 
+
          return oversikt.setPassord(); 
      }
    
