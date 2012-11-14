@@ -8,8 +8,11 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 public class Oversikt implements Serializable{
@@ -24,12 +27,13 @@ public class Oversikt implements Serializable{
     ResultSet res = null; 
    
     // Klassevariabler
-    private String bruker = "anne";
+    private String bruker = "";
     private String passord = "";
     private boolean loggetInn;    
     
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
     
+    private static Logger logger = Logger.getLogger("trening");
     
     public Oversikt(){
       try{
@@ -285,7 +289,27 @@ public class Oversikt implements Serializable{
             lukkForbindelse();
          }
      }
+        public String getName() { 
+      if (bruker == null) getUserData(); 
+      return bruker == null ? "" : bruker; 
+   }
+     private void getUserData() {
+      ExternalContext context 
+         = FacesContext.getCurrentInstance().getExternalContext();
+      Object requestObject =  context.getRequest();
+      if (!(requestObject instanceof HttpServletRequest)) {
+         logger.severe("request object has type " + requestObject.getClass());
+         return;
+      }
+      HttpServletRequest request = (HttpServletRequest) requestObject;
+      bruker = request.getRemoteUser();
+   }
          
+     
+     public String setPassord(String gammel, String ny){
+         getName();
+         
+     }
     
     
 }
