@@ -19,52 +19,14 @@
        </application>
        
        <navigation-rule>
-      
-      <!--
-        skal bruke senere
-               
-          <navigation-case>
-            <from-outcome>nyBruker</from-outcome>
-            <to-view-id>/nyBruker.xhtml</to-view-id>
-          </navigation-case>
-           -->
-            <navigation-case>
-                <from-outcome>innloggingOk</from-outcome>
-                <to-view-id>/index.xhtml</to-view-id>
-            </navigation-case>
             
             <navigation-case>
-                <from-outcome>innloggingFeil</from-outcome>
-                <to-view-id>/login.xhtml</to-view-id>
-            </navigation-case>
-            
-            <navigation-case>
-                <from-outcome>visInfo</from-outcome>
-                <to-view-id>/liste.xhtml</to-view-id>
-            </navigation-case>
-            
-            <navigation-case>
-                <from-outcome>oppdater</from-outcome>
-                <to-view-id>/liste.xhtml</to-view-id>
-            </navigation-case>
-            
-            <navigation-case>
-                <fromfrom-outcome>loggUt</fromfrom-outcome>
-                <to-view-id>/login.xhtml</to-view-id>
-            </navigation-case>
-
-            <navigation-case>
-                <from-outcome>Passord</from-outcome>
-                <to-view-id>/NyttPass.xhtml</to-view-id>
-            </navigation-case>
-            
-            <navigation-case>
-                <from-outcome>nyttPassordOk</from-outcome>
-                <to-view-id>/index.xhtml</to-view-id>
+                <from-outcome>Liste</from-outcome>
+                <to-view-id>/protected/Liste.xhtml</to-view-id>
             </navigation-case>
          
           </navigation-rule>
-       
+         
        
      
     

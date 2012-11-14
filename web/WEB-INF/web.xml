@@ -11,8 +11,8 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
         <url-pattern>*.xhtml</url-pattern> 
+        <url-pattern>/faces/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -20,33 +20,30 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/index.xhtml</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+    
     
     <security-constraint>
            <web-resource-collection>
-               <web-resource-name>Protected Pages </web-resource-name>
+               <web-resource-name>Protected Pages</web-resource-name>
                <url-pattern> /faces/protected/* </url-pattern>
                <url-pattern> /protected/* </url-pattern>
+               <url-pattern>/*</url-pattern>
            </web-resource-collection>
            <auth-constraint>
                <role-name>bruker</role-name>
-               <role-name>admin</role-name>
            </auth-constraint>
     </security-constraint>
     
      <login-config>
-         <auth-method> basic </auth-method>
-         <realm-name>  waplj_realm </realm-name>
+         <auth-method>BASIC </auth-method>
+         <realm-name>waplj_realm </realm-name>
      </login-config>
    
      <security-role>
+         <description>bruker</description>
          <role-name>bruker</role-name>
      </security-role>
-     <security-role>
-         <role-name>system</role-name>
-     </security-role>
-          
-
-
-</web-app>
+   
+          </web-app>
