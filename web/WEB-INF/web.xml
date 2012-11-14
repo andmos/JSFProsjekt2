@@ -12,6 +12,7 @@
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>/faces/*</url-pattern>
+        <url-pattern>*.xhtml</url-pattern> 
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -35,7 +36,7 @@
     </security-constraint>
     
      <login-config>
-         <auth-method> FORM </auth-method>
+         <auth-method> basic </auth-method>
          <realm-name>  waplj_realm </realm-name>
      </login-config>
    
