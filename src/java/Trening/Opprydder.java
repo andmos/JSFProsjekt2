@@ -61,7 +61,7 @@ public class Opprydder {
   }
 
   public static void skrivMelding(Exception e, String melding) {
-    System.err.println("*** Feil oppst�tt: " + melding + ". ***");
+    System.err.println("*** Feil oppstått: " + melding + ". ***");
     e.printStackTrace(System.err);
   }
 }

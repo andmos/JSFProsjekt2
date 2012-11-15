@@ -4,43 +4,43 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
-  
-  <h:head>
-      <title>#{tekster.tittel}</title>
-  </h:head>
-  <h:body>
-    <ui:composition template="/template/standardTemplate.xhtml">
-      <ui:define name="top">
-        <h3>#{tekster.overskrift}</h3>
-      </ui:define>
-      <ui:define name="content">
-        
-         <table>
-                <tr>
-                    <td>#{tekster.nåPassord}</td>
-                    <td><h:inputText value="#{reg.gammeltPassord}"/></td>
-                </tr>
-                <tr>
-                    <td>#{tekster.nyttPassord}</td>
-                    <td><h:inputText value="#{reg.nyttPassord}"/></td>
-                </tr>
-                <tr>
-                    <td>#{tekster.gjentattPassord}</td>
-                    <td><h:inputText value="#{reg.gjentattPassord}"/></td>
-                </tr>
-               
-            </table>
-          <p>
-              <h:commandButton value="#{tekster.knappByttPassord}" action="#{reg.byttPassord()}"/>
-              
-              
-            <br></br>
-       
-          </p>
-          
-        </ui:define>
-      
-    </ui:composition>
-  </h:body>  
+
+    <h:head>
+        <title>#{tekster.tittel}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/standardTemplate.xhtml">
+            <ui:define name="top">
+                <h3>#{tekster.overskrift}</h3>
+            </ui:define>
+            <ui:define name="content">
+
+                <table>
+                    <tr>
+                        <td>#{tekster.nåPassord}</td>
+                        <td><h:inputText value="#{reg.gammeltPassord}"/></td>
+                    </tr>
+                    <tr>
+                        <td>#{tekster.nyttPassord}</td>
+                        <td><h:inputText value="#{reg.nyttPassord}"/></td>
+                    </tr>
+                    <tr>
+                        <td>#{tekster.gjentattPassord}</td>
+                        <td><h:inputText value="#{reg.gjentattPassord}"/></td>
+                    </tr>
+
+                </table>
+                <p>
+                    <h:commandButton value="#{tekster.knappByttPassord}" action="#{reg.byttPassord()}"/>
+
+
+                    <br></br>
+
+                </p>
+
+            </ui:define>
+
+        </ui:composition>
+    </h:body>  
 </html>
 

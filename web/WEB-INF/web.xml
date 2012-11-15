@@ -26,25 +26,25 @@
     
     
     <security-constraint>
-           <web-resource-collection>
-               <web-resource-name>Protected Pages</web-resource-name>
-               <url-pattern>/*</url-pattern>
-           </web-resource-collection>
-           <auth-constraint>
-               <role-name>bruker</role-name>
+        <web-resource-collection>
+            <web-resource-name>Protected Pages</web-resource-name>
+            <url-pattern>/protected/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>bruker</role-name>
                
-           </auth-constraint>
+        </auth-constraint>
     </security-constraint>
     
-     <login-config>
-         <auth-method>BASIC </auth-method>
-         <realm-name>waplj_realm </realm-name>
-     </login-config>
+    <login-config>
+        <auth-method>BASIC </auth-method>
+        <realm-name>waplj_realm</realm-name>
+    </login-config>
    
-     <security-role>
-         <description>bruker</description>
-         <role-name>bruker</role-name>
-     </security-role>
+    <security-role>
+        <description>bruker</description>
+        <role-name>bruker</role-name>
+    </security-role>
     
    
-  </web-app>
+</web-app>
