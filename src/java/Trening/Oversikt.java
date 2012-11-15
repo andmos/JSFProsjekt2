@@ -42,8 +42,8 @@ public class Oversikt implements Serializable {
 
         } catch (SQLException e) {
             System.out.println(e + " Noe gikk galt i databaseforbindelsen");
-        } catch (NamingException k) {
-            System.out.println("Noe gikk galt med kastinga på NAVN" + k);
+        } catch (NamingException e) {
+            System.out.println("Noe gikk galt med kastinga på NAVN " + e.getMessage());
         } finally {
             Opprydder.lukkResSet(res);
             Opprydder.lukkSetning(setning);
