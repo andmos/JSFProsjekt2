@@ -187,6 +187,8 @@ public class regtreningBean implements Serializable {
      tabelldata = temp; 
     }
     
+    
+    
     public void apneForbindelse(){
         try{ if(ds == null){
             throw new SQLException("ingen datasource funnet"); 
