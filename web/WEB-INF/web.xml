@@ -37,7 +37,7 @@
     </security-constraint>
     
     <login-config>
-        <auth-method>BASIC </auth-method>
+        <auth-method>BASIC</auth-method>
         <realm-name>waplj_realm</realm-name>
     </login-config>
    

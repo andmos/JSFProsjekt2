@@ -157,7 +157,7 @@ public class Oversikt implements Serializable {
             setning.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Noe gikk galt med oppdateringen" + e);
+            System.out.println("Noe gikk galt med oppdateringen" + e.getMessage());
 
         } finally {
             Opprydder.lukkSetning(setning);
@@ -177,7 +177,7 @@ public class Oversikt implements Serializable {
             setning.executeUpdate();
 
         } catch (SQLException e) {
-            System.out.println("Noe gikk galt med slettingen " + e);
+            System.out.println("Noe gikk galt med slettingen " + e.getMessage());
         } finally {
             Opprydder.lukkSetning(setning);
             Opprydder.settAutoCommit(forbindelse);
@@ -201,7 +201,7 @@ public class Oversikt implements Serializable {
                 kategorier.add(res.getString(1));
             }
         } catch (SQLException e) {
-            System.out.println("Noe gikk galt i kategorihentingen" + e);
+            System.out.println("Noe gikk galt i kategorihentingen" + e.getMessage());
         } finally {
             Opprydder.lukkSetning(setning);
             lukkForbindelse();
@@ -219,7 +219,7 @@ public class Oversikt implements Serializable {
 
 
         } catch (Exception e) {
-            System.out.println("Feil med databaseforbindelse " + e);
+            System.out.println("Feil med databaseforbindelse " + e.getMessage());
         }
     }
 }

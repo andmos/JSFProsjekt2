@@ -197,7 +197,7 @@ public class regtreningBean implements Serializable {
         navn = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
     }
 
-    public boolean sjekkPassord() {
+    public boolean sjekkPassordMotDb() {
         boolean t = false;
         try {
             apneForbindelse();
@@ -225,7 +225,7 @@ public class regtreningBean implements Serializable {
 
     }
 
-    public boolean sjekkNyttP() {//returnerer true hvis passordet har Minst 6 tegn, Minst et spesialtegn og ett siffer :)
+    public boolean sjekkNyttPassord() {//returnerer true hvis passordet har Minst 6 tegn, Minst et spesialtegn og ett siffer :)
         String pattern = "^(?=.*[0-9])(?=.*[`~!@#$%^&*()_+,./{}|:\"<>?])[a-zA-Z0-9].{6,10}$";
         if (nyttPassord.matches(pattern)) {
             return true;
@@ -236,7 +236,7 @@ public class regtreningBean implements Serializable {
     public String byttPassord() {
         String svar = "";
         getBrukerNavn();
-        if (sjekkPassord() && sjekkNyttP() && nyttPassord.equals(gjentattPassord)) {
+        if (sjekkPassordMotDb() && sjekkNyttPassord() && nyttPassord.equals(gjentattPassord)) {
 
             try {
                 apneForbindelse();
