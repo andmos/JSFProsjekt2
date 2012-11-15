@@ -22,13 +22,15 @@
             
             <navigation-case>
                 <from-outcome>Liste</from-outcome>
-                <to-view-id> Liste.xhtml</to-view-id>
+                <to-view-id> /Liste.xhtml</to-view-id>
             </navigation-case>
             
             <navigation-case>
                 <from-outcome>index</from-outcome>
                 <to-view-id>/index.xhtml</to-view-id>
             </navigation-case>
+            
+       
          
           </navigation-rule>
          

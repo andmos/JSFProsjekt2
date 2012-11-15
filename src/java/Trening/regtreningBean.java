@@ -14,9 +14,13 @@ import java.util.Collections;
 import java.util.Locale;
 import javax.faces.context.FacesContext;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource; 
 import javax.annotation.Resource; 
+import javax.faces.context.ExternalContext;
+import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletRequest;
         
 @Named ("reg") 
 @SessionScoped
@@ -29,9 +33,31 @@ public class regtreningBean implements Serializable {
      private Oversikt oversikt = new Oversikt();
      private List<TreningsOktStatus> tabelldata = Collections.synchronizedList(new ArrayList<TreningsOktStatus>());
      private Connection forbindelse; 
+     private PreparedStatement setning = null; 
+    private ResultSet res = null;
+     
+             
+     
+     private String gjentattPassord = "";
+     private String gammeltPassord="";
+     private String nyttPassord = "";
+     private String navn = "";
+     private static Logger logger = Logger.getLogger("com.corejsf");
+     
+     
       public regtreningBean(){
         
       }
+
+    public String getGammeltPassord() {
+        return gammeltPassord;
+    }
+
+    public String getNyttPassord() {
+        return nyttPassord;
+    }
+      
+      
 
     public List<TreningsOktStatus> getTabelldata() {
         return tabelldata;
@@ -161,9 +187,13 @@ public class regtreningBean implements Serializable {
         }
     }
     
-    public synchronized String loggInn(){
-        return oversikt.logginn();
-    }
+    public synchronized String getGjentattPassord() {
+    return gjentattPassord;
+  }
+
+  public synchronized void setGjentattPassord(String nyttGjentattPassord) {
+    gjentattPassord = nyttGjentattPassord;
+  }
     
     public synchronized String getPassord(){
         return oversikt.getPassord();
@@ -173,7 +203,82 @@ public class regtreningBean implements Serializable {
         oversikt.setPassord(etPassord);
     }
             
-    
+     private void getUserData() {
+      ExternalContext context 
+         = FacesContext.getCurrentInstance().getExternalContext();
+      Object requestObject =  context.getRequest();
+      if (!(requestObject instanceof HttpServletRequest)) {
+         logger.severe("request object has type " + requestObject.getClass());
+         return;
+      }
+      HttpServletRequest request = (HttpServletRequest) requestObject;
+      navn = request.getRemoteUser();
+   }
+     
+     public String getNavn() { 
+      if (navn == null) getUserData(); 
+      return navn == null ? "" : navn; 
+      
+   }
+     
+     private void getBrukerNavn(){
+         navn = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+     }
+      
+ 
+     public boolean sjekkPassord(String gammeltPassord){
+        boolean t = false;
+         try{
+             apneForbindelse();
+             forbindelse.setAutoCommit(false);
+             setning = forbindelse.prepareStatement("select passord from bruker where brukernavn=?");
+             setning.setString(1, navn);
+            res = setning.executeQuery();
+             String fraDb = "";  
+            while(res.next()){
+               fraDb = res.getString(1);
+            }if(gammeltPassord.equalsIgnoreCase(fraDb)){
+                t = true;
+            }
+             
+         }catch(SQLException e){
+             System.out.println("Passordene stemmte ikke overens " + e.getMessage());
+         }finally{
+             Opprydder.lukkResSet(res);
+             Opprydder.lukkSetning(setning);
+             Opprydder.lukkForbindelse(forbindelse);
+         }
+         return t;
+     
+     }
+     
+     public String byttPassord(){
+         String svar = "";
+         getBrukerNavn();
+         if(sjekkPassord(gammeltPassord)){
+             try{
+                 apneForbindelse();
+                 forbindelse.setAutoCommit(false);
+                 setning = forbindelse.prepareStatement("UPDATE bruker SET passord=? WHERE brukernavn=?");
+                 setning.setString(1, nyttPassord);
+                 setning.setString(2, navn);
+                 setning.executeUpdate(); 
+                 svar = "PassordOk";
+             }catch(SQLException e){
+                 svar = ("Noe gikk galt med bytte av passord " + e.getMessage());
+             }finally{
+                 Opprydder.settAutoCommit(forbindelse);
+                 Opprydder.lukkSetning(setning);
+                 Opprydder.lukkForbindelse(forbindelse);
+             }
+         }  
+         
+         return svar;
+     }
+     
+     
+     
+       
 }
 
 

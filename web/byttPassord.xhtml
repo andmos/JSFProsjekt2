@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+  
+  <h:head>
+      <title>#{tekster.tittel}</title>
+  </h:head>
+  <h:body>
+    <ui:composition template="/template/standardTemplate.xhtml">
+      <ui:define name="top">
+        <h3>#{tekster.overskrift}</h3>
+      </ui:define>
+      <ui:define name="content">
+        
+         <table>
+                <tr>
+                    <td>Nåværende passord: </td>
+                    <td><h:inputText action="#{reg.gammeltPassord}"/></td>
+                </tr>
+                <tr>
+                    <td>Nytt passord: </td>
+                    <td><h:inputSecret action="#{reg.nyttPassord}"/></td>
+                </tr>
+                <tr>
+                    <td>Gjenta passord:</td>
+                    <td><h:inputSecret action="#{reg.gjentattPassord}"/></td>
+                </tr>
+               
+            </table>
+          <p>
+              <h:commandButton value="Bytt passord" action="#{reg.byttPassord()}"/>
+           
+            <br></br>
+       
+          </p>
+          
+        </ui:define>
+      
+    </ui:composition>
+  </h:body>  
+</html>
+

@@ -23,8 +23,8 @@ public class Oversikt implements Serializable{
     // Databasevariabler  
   
     private Connection forbindelse = null; 
-    PreparedStatement setning = null; 
-    ResultSet res = null; 
+    private PreparedStatement setning = null; 
+    private ResultSet res = null; 
    
     // Klassevariabler
     private String bruker = "";
@@ -209,7 +209,7 @@ public class Oversikt implements Serializable{
       
      
      
-     private void lukkForbindelse(){
+     public void lukkForbindelse(){
        System.out.println("lukker");
        Opprydder.lukkForbindelse(forbindelse);
        
@@ -246,70 +246,7 @@ public class Oversikt implements Serializable{
         }
     }
      
-     public String logginn(){
-         try{
-             doLoggInn();
-         }catch(SQLException ex){
-             System.out.println("Innlogging feil");
-             return "innloggingFeil";
-         }
-         if(loggetInn){
-             return "innlogginOk"; 
-         }else{
-             return "innlogginFeil";
-         }
-     }
-     public String loggUt(){
-         loggetInn = false;
-         return "loggUt";
-     }
-     
-     public void doLoggInn() throws SQLException{
-         if(ds == null) throw new SQLException("Ingen data");
-         apneForbindelse();
-         
-         try{
-             forbindelse.setAutoCommit(false);
-             boolean samla = false;
-             try{
-                 setning = forbindelse.prepareStatement("Select passord from bruker where brukernavn = ?");
-                 setning.setString(1, bruker);
-                 res = setning.executeQuery();
-                 
-                 if(!res.next()) return;
-                 String lagretPass = res.getString("passord");
-                 loggetInn = passord.equals(lagretPass.trim());
-                 
-             }catch(SQLException e){
-                 System.out.println("blabla");
-             }
-         }finally{
-             Opprydder.lukkSetning(setning);
-            Opprydder.settAutoCommit(forbindelse);
-            lukkForbindelse();
-         }
-     }
-        public String getName() { 
-      if (bruker == null) getUserData(); 
-      return bruker == null ? "" : bruker; 
-   }
-     private void getUserData() {
-      ExternalContext context 
-         = FacesContext.getCurrentInstance().getExternalContext();
-      Object requestObject =  context.getRequest();
-      if (!(requestObject instanceof HttpServletRequest)) {
-         logger.severe("request object has type " + requestObject.getClass());
-         return;
-      }
-      HttpServletRequest request = (HttpServletRequest) requestObject;
-      bruker = request.getRemoteUser();
-   }
-         
-     
-     public String setPassord(String gammel, String ny){
-         getName();
-         
-     }
+  
     
     
 }
