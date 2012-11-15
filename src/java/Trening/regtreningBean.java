@@ -21,7 +21,8 @@ import javax.annotation.Resource;
 import javax.faces.context.ExternalContext;
 import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
-        
+import java.util.regex.*;
+
 @Named ("reg") 
 @SessionScoped
 
@@ -53,9 +54,21 @@ public class regtreningBean implements Serializable {
         return gammeltPassord;
     }
 
+    public void setGammeltPassord(String gammeltPassord) {
+        this.gammeltPassord = gammeltPassord;
+    }
+    
+    
+
     public String getNyttPassord() {
         return nyttPassord;
     }
+
+    public void setNyttPassord(String nyttPassord) {
+        this.nyttPassord = nyttPassord;
+    }
+    
+    
       
       
 
@@ -203,30 +216,15 @@ public class regtreningBean implements Serializable {
         oversikt.setPassord(etPassord);
     }
             
-     private void getUserData() {
-      ExternalContext context 
-         = FacesContext.getCurrentInstance().getExternalContext();
-      Object requestObject =  context.getRequest();
-      if (!(requestObject instanceof HttpServletRequest)) {
-         logger.severe("request object has type " + requestObject.getClass());
-         return;
-      }
-      HttpServletRequest request = (HttpServletRequest) requestObject;
-      navn = request.getRemoteUser();
-   }
+    
      
-     public String getNavn() { 
-      if (navn == null) getUserData(); 
-      return navn == null ? "" : navn; 
-      
-   }
      
      private void getBrukerNavn(){
          navn = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
      }
       
  
-     public boolean sjekkPassord(String gammeltPassord){
+     public boolean sjekkPassord(){
         boolean t = false;
          try{
              apneForbindelse();
@@ -235,6 +233,7 @@ public class regtreningBean implements Serializable {
              setning.setString(1, navn);
             res = setning.executeQuery();
              String fraDb = "";  
+             System.out.println("Jeg er inne i SjekkPassord");
             while(res.next()){
                fraDb = res.getString(1);
             }if(gammeltPassord.equalsIgnoreCase(fraDb)){
@@ -251,11 +250,19 @@ public class regtreningBean implements Serializable {
          return t;
      
      }
+     public boolean sjekkNyttP(){//returnerer true hvis passordet har Minst 6 tegn, Minst et spesialtegn og ett siffer :)
+       String pattern = "^(?=.*[0-9])(?=.*[`~!@#$%^&*()_+,./{}|:\"<>?])[a-zA-Z0-9].{6,10}$";
+        if(nyttPassord.matches(pattern)){
+            return true;
+        }
+        return false;
+     }
      
      public String byttPassord(){
          String svar = "";
          getBrukerNavn();
-         if(sjekkPassord(gammeltPassord)){
+         if(sjekkPassord() && sjekkNyttP() && nyttPassord.equals(gjentattPassord)){
+          
              try{
                  apneForbindelse();
                  forbindelse.setAutoCommit(false);
@@ -263,21 +270,21 @@ public class regtreningBean implements Serializable {
                  setning.setString(1, nyttPassord);
                  setning.setString(2, navn);
                  setning.executeUpdate(); 
-                 svar = "PassordOk";
+                 svar = "passordOk";
              }catch(SQLException e){
-                 svar = ("Noe gikk galt med bytte av passord " + e.getMessage());
+                 System.out.println("Feil i byttPassord" + e.getMessage());
              }finally{
                  Opprydder.settAutoCommit(forbindelse);
                  Opprydder.lukkSetning(setning);
                  Opprydder.lukkForbindelse(forbindelse);
              }
-         }  
-         
+           
+         }else{
+             svar = "passordFeil";
+         }
          return svar;
      }
-     
-     
-     
+    
        
 }
 

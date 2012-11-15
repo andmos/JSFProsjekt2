@@ -15,24 +15,9 @@
       </ui:define>
       <ui:define name="content">
         
-         <table>
-                <tr>
-                    <td>#{tekster.nåPassord}</td>
-                    <td><h:inputText value="#{reg.gammeltPassord}"/></td>
-                </tr>
-                <tr>
-                    <td>#{tekster.nyttPassord}</td>
-                    <td><h:inputText value="#{reg.nyttPassord}"/></td>
-                </tr>
-                <tr>
-                    <td>#{tekster.gjentattPassord}</td>
-                    <td><h:inputText value="#{reg.gjentattPassord}"/></td>
-                </tr>
-               
-            </table>
           <p>
-              <h:commandButton value="#{tekster.knappByttPassord}" action="#{reg.byttPassord()}"/>
-              <h:commandButton value="#{tekster.knappTilbake}" action="index.xhtml"/>
+              DU HAR SKREVET FEIL PASSORD!
+              <h:commandButton value="#{tekster.knappTilbake}" action="byttPassord.xhtml"/>
               
             <br></br>
        

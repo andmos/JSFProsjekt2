@@ -20,22 +20,19 @@
        
        <navigation-rule>
             
+            <from-view-id>/byttPassord.xhtml</from-view-id>
             <navigation-case>
-                <from-outcome>Liste</from-outcome>
-                <to-view-id> /Liste.xhtml</to-view-id>
-            </navigation-case>
-            
-            <navigation-case>
-                <from-outcome>index</from-outcome>
+                <from-outcome>passordOk</from-outcome>
                 <to-view-id>/index.xhtml</to-view-id>
             </navigation-case>
             
-       
-         
-          </navigation-rule>
-         
-       
-     
+              <navigation-case>
+                <from-outcome>passordFeil</from-outcome>
+                <to-view-id>/feilPassord.xhtml</to-view-id>
+            </navigation-case>
+            
+      
+      </navigation-rule>   
+      
     
-
 </faces-config>
