@@ -5,7 +5,6 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
@@ -19,16 +18,18 @@ public class Oversikt implements Serializable {
     private Connection forbindelse = null;
     private PreparedStatement setning = null;
     private ResultSet res = null;
-    private String bruker = "";
+    private String bruker = getBrukerNavn();
     private String passord = "";
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
-    private static Logger logger = Logger.getLogger("trening");
+   
 
     public Oversikt() {
         try {
             ds = (DataSource) new InitialContext().lookup("jdbc/waplj_prosjekt");
             forbindelse = ds.getConnection();
-            setning = forbindelse.prepareStatement("select * from trening");
+       
+            setning = forbindelse.prepareStatement("select * from trening where brukernavn=?");
+            setning.setString(1, bruker);
             res = setning.executeQuery();
             while (res.next()) {
                 Date enDato = res.getDate("Dato");
@@ -54,10 +55,6 @@ public class Oversikt implements Serializable {
 
     public String getBruker() {
         return bruker;
-    }
-
-    public void setBruker(String nyBruker) {
-        bruker = nyBruker;
     }
 
     public String getPassord() {
@@ -90,7 +87,7 @@ public class Oversikt implements Serializable {
         } finally {
             Opprydder.lukkSetning(setning);
             Opprydder.settAutoCommit(forbindelse);
-            lukkForbindelse();
+            Opprydder.lukkForbindelse(forbindelse);
         }
         return (double) varighet / sum;
 
@@ -137,7 +134,7 @@ public class Oversikt implements Serializable {
         } finally {
             Opprydder.lukkSetning(setning);
             Opprydder.settAutoCommit(forbindelse);
-            lukkForbindelse();
+            Opprydder.lukkForbindelse(forbindelse);
 
         }
     }
@@ -162,7 +159,7 @@ public class Oversikt implements Serializable {
 
         } finally {
             Opprydder.lukkSetning(setning);
-            lukkForbindelse();
+            Opprydder.lukkForbindelse(forbindelse);
         }
     }
 
@@ -182,14 +179,8 @@ public class Oversikt implements Serializable {
         } finally {
             Opprydder.lukkSetning(setning);
             Opprydder.settAutoCommit(forbindelse);
-            lukkForbindelse();
+            Opprydder.lukkForbindelse(forbindelse);
         }
-    }
-
-    public void lukkForbindelse() {
-        System.out.println("lukker");
-        Opprydder.lukkForbindelse(forbindelse);
-
     }
 
     public ArrayList<String> Kategorier() {
@@ -205,7 +196,7 @@ public class Oversikt implements Serializable {
             System.out.println("Noe gikk galt i kategorihentingen" + e.getMessage());
         } finally {
             Opprydder.lukkSetning(setning);
-            lukkForbindelse();
+            Opprydder.lukkForbindelse(forbindelse);
         }
         return kategorier;
     }

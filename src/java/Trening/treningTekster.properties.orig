@@ -36,3 +36,5 @@ gjentattPassord = Gjenta passord
 byttPass = Bytt passord
 feilPass = Feil passord
 feilPassTekst = Du har skrevet feil passord. Sjekk at du skrev to like passord! 
+loggetInn = Logget inn som 
+passordtekst = Nytt passord må inneholde minst 6 tegn, ett spesialtegn samt ett siffer

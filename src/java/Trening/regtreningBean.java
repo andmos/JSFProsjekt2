@@ -63,10 +63,6 @@ public class regtreningBean implements Serializable {
         return oversikt.getBruker();
     }
 
-    public synchronized void setBruker(String nyBruker) {
-        oversikt.setBruker(nyBruker);
-    }
-
     public synchronized double getSum() {
         return oversikt.getSum();
     }
@@ -233,7 +229,7 @@ public class regtreningBean implements Serializable {
 
     public String byttPassord() {
         String svar = "";
-        if (sjekkPassordMotDb() && sjekkNyttPassord() && nyttPassord.equals(gjentattPassord)) {
+        if (sjekkPassordMotDb() && sjekkNyttPassord() && nyttPassord.equals(gjentattPassord) && !(nyttPassord.equals(gammeltPassord))) {
 
             try {
                 apneForbindelse();

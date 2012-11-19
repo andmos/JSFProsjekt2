@@ -4,7 +4,6 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
-
     <h:head>
         <title>#{tekster.title}</title>
     </h:head>
@@ -16,6 +15,12 @@
             <ui:define name="content">
 
                 <table>
+                    <tr>
+                        <td>
+                            #{tekster.passordtekst}
+                        </td>
+                    </tr>
+                    
                     <tr>
                         <td>#{tekster.nåPassord}</td>
                         <td><h:inputText value="#{reg.gammeltPassord}"/></td>
