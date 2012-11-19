@@ -19,14 +19,12 @@ public class Oversikt implements Serializable {
     private PreparedStatement setning = null;
     private ResultSet res = null;
     private String bruker = getBrukerNavn();
-    
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
 
     public Oversikt() {
         try {
             ds = (DataSource) new InitialContext().lookup("jdbc/waplj_prosjekt");
             forbindelse = ds.getConnection();
-
             setning = forbindelse.prepareStatement("select * from trening where brukernavn=?");
             setning.setString(1, bruker);
             res = setning.executeQuery();
@@ -61,6 +59,7 @@ public class Oversikt implements Serializable {
     }
 
     public double getSum() {
+        
         double sum = 0;
         int varighet = 0;
         try {
@@ -89,10 +88,10 @@ public class Oversikt implements Serializable {
     }
 
     public void regNyOkt(TreningsOkt ny) {
-        getBrukerNavn();
+        
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dato = ny.getDato();
-        String datodb = formatter.format(dato);
+        String datodb = formatter.format(dato); //Formatering av dato pga Date - objekt
         int varighet = ny.getVarighet();
         String tekst = ny.getTekst();
         String kategori = ny.getKategori();
@@ -175,6 +174,7 @@ public class Oversikt implements Serializable {
     }
 
     public ArrayList<String> Kategorier() {
+
         ArrayList<String> kategorier = new ArrayList<String>();
         try {
             apneForbindelse();

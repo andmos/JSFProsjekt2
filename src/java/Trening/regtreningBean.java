@@ -29,7 +29,7 @@ public class regtreningBean implements Serializable {
     private String gjentattPassord = "";
     private String gammeltPassord = "";
     private String nyttPassord = "";
-    private String navn = oversikt.getBrukerNavn();
+    
    
 
     public regtreningBean() {
@@ -188,7 +188,7 @@ public class regtreningBean implements Serializable {
             apneForbindelse();
             forbindelse.setAutoCommit(false);
             setning = forbindelse.prepareStatement("select passord from bruker where brukernavn=?");
-            setning.setString(1, navn);
+            setning.setString(1, getBruker());
             res = setning.executeQuery();
             String fraDb = "";
             System.out.println("Jeg er inne i SjekkPassord");
@@ -229,7 +229,7 @@ public class regtreningBean implements Serializable {
                 forbindelse.setAutoCommit(false);
                 setning = forbindelse.prepareStatement("UPDATE bruker SET passord=? WHERE brukernavn=?");
                 setning.setString(1, nyttPassord);
-                setning.setString(2, navn);
+                setning.setString(2, getBruker());
                 setning.executeUpdate();
                 svar = "passordOk";
             } catch (SQLException e) {
