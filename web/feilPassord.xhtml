@@ -6,18 +6,20 @@
       
   
   <h:head>
-      <title>#{tekster.tittel}</title>
+      <title>#{tekster.t}</title>
   </h:head>
   <h:body>
     <ui:composition template="/template/standardTemplate.xhtml">
       <ui:define name="top">
-        <h3>#{tekster.overskrift}</h3>
+        <h3>#{tekster.feilPass}</h3>
       </ui:define>
       <ui:define name="content">
         
           <p>
-             Du har skrevet feil passord. Sjekk at du skrev to like passord! 
-              <h:commandButton value="#{tekster.knappTilbake}" action="byttPassord.xhtml"/>
+             #{tekster.feilPassTekst}
+             <br></br>
+             <br></br>
+             <h:commandButton value="#{tekster.knappTilbake}" action="byttPassord.xhtml"/>
               
             <br></br>
        

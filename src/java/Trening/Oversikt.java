@@ -210,8 +210,9 @@ public class Oversikt implements Serializable {
         return kategorier;
     }
     
-    public void getBrukerNavn() {
+    public String getBrukerNavn() {
         bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+        return bruker; 
     }
     
     

@@ -33,3 +33,6 @@ knappByttPassord=Skift Passord
 nåPassord=N\u00f8v\u00e6rende passord
 nyttPassord =Nytt passord
 gjentattPassord = Gjenta passord
+byttPass = Bytt passord
+feilPass = Feil passord
+feilPassTekst = Du har skrevet feil passord. Sjekk at du skrev to like passord! 

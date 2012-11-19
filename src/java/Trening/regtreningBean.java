@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.context.SessionScoped;
@@ -30,8 +29,8 @@ public class regtreningBean implements Serializable {
     private String gjentattPassord = "";
     private String gammeltPassord = "";
     private String nyttPassord = "";
-    private String navn = "";
-    private static Logger logger = Logger.getLogger("com.corejsf");
+    private String navn = oversikt.getBrukerNavn();
+   
 
     public regtreningBean() {
     }
@@ -193,9 +192,6 @@ public class regtreningBean implements Serializable {
         oversikt.setPassord(etPassord);
     }
 
-    public void getBrukerNavn() {
-        navn = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-    }
 
     public boolean sjekkPassordMotDb() {
         boolean t = false;
@@ -237,7 +233,6 @@ public class regtreningBean implements Serializable {
 
     public String byttPassord() {
         String svar = "";
-        getBrukerNavn();
         if (sjekkPassordMotDb() && sjekkNyttPassord() && nyttPassord.equals(gjentattPassord)) {
 
             try {
