@@ -13,7 +13,6 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern> 
         <url-pattern>/faces/*</url-pattern>
-       
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -21,10 +20,10 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>/index.xhtml</welcome-file>
     </welcome-file-list>
     
-    
+
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Protected Pages</web-resource-name>
@@ -32,7 +31,6 @@
         </web-resource-collection>
         <auth-constraint>
             <role-name>bruker</role-name>
-               
         </auth-constraint>
     </security-constraint>
     
@@ -40,11 +38,7 @@
         <auth-method>BASIC</auth-method>
         <realm-name>waplj_realm</realm-name>
     </login-config>
-   
-    <security-role>
-        <description>bruker</description>
+   <security-role>
         <role-name>bruker</role-name>
-    </security-role>
-    
-   
+   </security-role>
 </web-app>

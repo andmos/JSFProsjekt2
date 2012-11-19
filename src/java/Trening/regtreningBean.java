@@ -225,11 +225,13 @@ public class regtreningBean implements Serializable {
 
     }
 
-    public boolean sjekkNyttPassord() {//returnerer true hvis passordet har Minst 6 tegn, Minst et spesialtegn og ett siffer :)
+    public boolean sjekkNyttPassord() {
         String pattern = "^(?=.*[0-9])(?=.*[`~!@#$%^&*()_+,./{}|:\"<>?])[a-zA-Z0-9].{6,10}$";
         if (nyttPassord.matches(pattern)) {
+             System.out.println("TRUE");
             return true;
         }
+        System.out.println("FALSE");
         return false;
     }
 
