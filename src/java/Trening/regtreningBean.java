@@ -25,14 +25,15 @@ public class regtreningBean implements Serializable {
     private List<TreningsOktStatus> tabelldata = Collections.synchronizedList(new ArrayList<TreningsOktStatus>());
     private Connection forbindelse;
     private PreparedStatement setning = null;
-    private ResultSet res = null;
-    private String gjentattPassord = null;
-    private String gammeltPassord = null;
-    private String nyttPassord = null;
+    private ResultSet res = null; 
+    private String gjentattPassord = "";
+    private String gammeltPassord = "";
+    private String nyttPassord = "";
     private String navn = oversikt.getBrukerNavn();
    
 
     public regtreningBean() {
+    
     }
 
     public String getGammeltPassord() {
@@ -179,6 +180,7 @@ public class regtreningBean implements Serializable {
     public synchronized void setGjentattPassord(String nyttGjentattPassord) {
         gjentattPassord = nyttGjentattPassord;
     }
+
 
     public boolean sjekkPassordMotDb() {
         boolean t = false;
