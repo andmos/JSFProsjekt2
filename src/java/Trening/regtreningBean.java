@@ -193,7 +193,7 @@ public class regtreningBean implements Serializable {
         oversikt.setPassord(etPassord);
     }
 
-    private void getBrukerNavn() {
+    public void getBrukerNavn() {
         navn = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
     }
 

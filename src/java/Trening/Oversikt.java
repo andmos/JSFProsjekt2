@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
+import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -100,7 +101,7 @@ public class Oversikt implements Serializable {
     }
 
     public void regNyOkt(TreningsOkt ny) {
-
+        getBrukerNavn();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date dato = ny.getDato();
         String datodb = formatter.format(dato);
@@ -208,7 +209,12 @@ public class Oversikt implements Serializable {
         }
         return kategorier;
     }
-
+    
+    public void getBrukerNavn() {
+        bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+    }
+    
+    
     public void apneForbindelse() {
         try {
             if (ds == null) {
