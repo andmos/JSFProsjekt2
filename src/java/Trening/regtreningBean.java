@@ -25,15 +25,12 @@ public class regtreningBean implements Serializable {
     private List<TreningsOktStatus> tabelldata = Collections.synchronizedList(new ArrayList<TreningsOktStatus>());
     private Connection forbindelse;
     private PreparedStatement setning = null;
-    private ResultSet res = null; 
+    private ResultSet res = null;
     private String gjentattPassord = "";
     private String gammeltPassord = "";
     private String nyttPassord = "";
-    
-   
 
     public regtreningBean() {
-    
     }
 
     public String getGammeltPassord() {
@@ -81,6 +78,7 @@ public class regtreningBean implements Serializable {
     }
 
     public synchronized void oppdater() {
+
         if (!tempOkt.getTekst().trim().equals("")) {
             TreningsOkt nyOkt = new TreningsOkt(tempOkt.getDato(), tempOkt.getKategori(), tempOkt.getTekst(), tempOkt.getVarighet());
             oversikt.regNyOkt(nyOkt);
@@ -181,8 +179,8 @@ public class regtreningBean implements Serializable {
         gjentattPassord = nyttGjentattPassord;
     }
 
-
     public boolean sjekkPassordMotDb() {
+
         boolean t = false;
         try {
             apneForbindelse();
@@ -211,9 +209,10 @@ public class regtreningBean implements Serializable {
     }
 
     public boolean sjekkNyttPassord() {
+
         String pattern = "^(?=.*[0-9])(?=.*[`~!@#$%^&*()_+,./{}|:\"<>?])[a-zA-Z0-9].{6,10}$";
         if (nyttPassord.matches(pattern)) {
-             System.out.println("TRUE");
+            System.out.println("TRUE");
             return true;
         }
         System.out.println("FALSE");
@@ -221,6 +220,7 @@ public class regtreningBean implements Serializable {
     }
 
     public String byttPassord() {
+
         String svar = null;
         if (sjekkPassordMotDb() && sjekkNyttPassord() && nyttPassord.equals(gjentattPassord) && !(nyttPassord.equals(gammeltPassord))) {
 
