@@ -19,15 +19,14 @@ public class Oversikt implements Serializable {
     private PreparedStatement setning = null;
     private ResultSet res = null;
     private String bruker = getBrukerNavn();
-    private String passord = "";
+    
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
-   
 
     public Oversikt() {
         try {
             ds = (DataSource) new InitialContext().lookup("jdbc/waplj_prosjekt");
             forbindelse = ds.getConnection();
-       
+
             setning = forbindelse.prepareStatement("select * from trening where brukernavn=?");
             setning.setString(1, bruker);
             res = setning.executeQuery();
@@ -55,14 +54,6 @@ public class Oversikt implements Serializable {
 
     public String getBruker() {
         return bruker;
-    }
-
-    public String getPassord() {
-        return passord;
-    }
-
-    public void setPassord(String passord) {
-        this.passord = passord;
     }
 
     public ArrayList<TreningsOkt> getAlleOkter() {
@@ -200,13 +191,12 @@ public class Oversikt implements Serializable {
         }
         return kategorier;
     }
-    
+
     public String getBrukerNavn() {
         bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-        return bruker; 
+        return bruker;
     }
-    
-    
+
     public void apneForbindelse() {
         try {
             if (ds == null) {
@@ -214,7 +204,6 @@ public class Oversikt implements Serializable {
             }
             forbindelse = ds.getConnection();
             System.out.println("Vellykket forbindelse til datastore ");
-
 
         } catch (Exception e) {
             System.out.println("Feil med databaseforbindelse " + e.getMessage());

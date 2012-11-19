@@ -26,9 +26,9 @@ public class regtreningBean implements Serializable {
     private Connection forbindelse;
     private PreparedStatement setning = null;
     private ResultSet res = null;
-    private String gjentattPassord = "";
-    private String gammeltPassord = "";
-    private String nyttPassord = "";
+    private String gjentattPassord = null;
+    private String gammeltPassord = null;
+    private String nyttPassord = null;
     private String navn = oversikt.getBrukerNavn();
    
 
@@ -180,15 +180,6 @@ public class regtreningBean implements Serializable {
         gjentattPassord = nyttGjentattPassord;
     }
 
-    public synchronized String getPassord() {
-        return oversikt.getPassord();
-    }
-
-    public synchronized void setPassord(String etPassord) {
-        oversikt.setPassord(etPassord);
-    }
-
-
     public boolean sjekkPassordMotDb() {
         boolean t = false;
         try {
@@ -228,7 +219,7 @@ public class regtreningBean implements Serializable {
     }
 
     public String byttPassord() {
-        String svar = "";
+        String svar = null;
         if (sjekkPassordMotDb() && sjekkNyttPassord() && nyttPassord.equals(gjentattPassord) && !(nyttPassord.equals(gammeltPassord))) {
 
             try {
