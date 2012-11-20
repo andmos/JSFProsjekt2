@@ -30,10 +30,10 @@ public class TreningsOkt {
     public int getOktNr() {
         return oktNr;
     }
+
     /**
      * Setter øktnummer for økta.
      */
-
     public void setOktNr(int nyttNr) {
         oktNr = nyttNr;
     }
@@ -44,17 +44,17 @@ public class TreningsOkt {
     public Date getDato() {
         return dato;
     }
-    /**
-     * Henter ut varigheten til ei økt. 
-     */
 
+    /**
+     * Henter ut varigheten til ei økt.
+     */
     public int getVarighet() {
         return varighet;
     }
+
     /**
      * Henter ut kategorien for ei økt.
      */
-
     public String getKategori() {
         return kategori;
     }
@@ -67,8 +67,8 @@ public class TreningsOkt {
     }
 
     /**
-     * setter dato på økten. OBS: bruker Date - objekt, omforming skjer 
-     * i metodene hvor det er nødvendig. 
+     * setter dato på økten. OBS: bruker Date - objekt, omforming skjer i
+     * metodene hvor det er nødvendig.
      */
     public void setDato(Date enDato) {
         dato = enDato;
@@ -88,19 +88,19 @@ public class TreningsOkt {
         kategori = enKategori;
 
     }
+
     /**
      * Setter teksten som lagres for ei økt
      */
-
     public void setTekst(String enTekst) {
 
         tekst = enTekst;
 
     }
-    /**
-     * Nullstiller hele objektet 
-     */
 
+    /**
+     * Nullstiller hele objektet
+     */
     public final void nullstill() {
 
         dato = new Date();
