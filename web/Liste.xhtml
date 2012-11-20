@@ -8,118 +8,118 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-  <h:head>
-      <title>#{tekster.tittelTo}</title>
-  </h:head>
-  <h:body>
-    <ui:composition template="/template/standardTemplate.xhtml">
-    
-      <ui:define name="top">
-        <h3>#{tekster.oversikt}</h3>
-      </ui:define>
-        <ui:define name="content">
-     
-      <br></br>
-      <h:dataTable value="#{reg.tabelldata}" var="enOkt"
-                   styleClass="standard" headerClass="hode" rowClasses="oddeRad, likeRad" footerClass="fot"
-                   rendered="#{reg.dataFins}">
-      
-              <!-- Kolonne øktnummer -->
-        <h:column>
-          <f:facet name="header">
-          <h:outputText value="#{tekster.oktnr}"/>
-            
-          </f:facet>
-          <h:outputText value="#{enOkt.treningsOkt.oktNr}"
-                       styleClass="lol"/>
-          
-        </h:column>
-        
-        
-        <!-- Kolonne Dato -->
-        <h:column>
-          <f:facet name="header">
-            <h:outputText value="#{tekster.datoTre}"/>
-          </f:facet>
-            <h:inputText value="#{enOkt.treningsOkt.dato}"
-                       styleClass="lol">
-            <f:convertDateTime pattern="dd.MM.yyyy"/>
-          </h:inputText>
-          <f:facet name="footer">
-            <h:outputText value="#{tekster.ant}"/>
-          </f:facet>
-        </h:column>
-        
-        
-        <!-- Kolonne kategori -->
-        <h:column>
-          <f:facet name="header">
-            <h:outputText value="#{tekster.kategori}"/>
-          </f:facet>
-            <h:inputText value="#{enOkt.treningsOkt.kategori}"
-                       styleClass="lol"/>
-          <f:facet name="footer">
-            <h:outputText value="#{reg.antallOkter}"/>
-          </f:facet>
-        </h:column>
-     
-       
-        
-        
-        <!-- Kolonne tekst -->
-        <h:column>
-          <f:facet name="header">
-            <h:outputText value="#{tekster.tekst}"/>
-          </f:facet>
-          <h:inputText value="#{enOkt.treningsOkt.tekst}"
-                       styleClass="lol"/>
-          <f:facet name="footer">
-            <h:outputText value="#{tekster.avg}" styleClass="lol2"/>
-          </f:facet>
-        </h:column>
-        
-        
-        <!-- Kolonne varighet -->
-        <h:column>
-          <f:facet name="header">
-            <h:outputText value="#{tekster.varighet}"
-                          styleClass="lol"/>
-            </f:facet>
-          <h:inputText value="#{enOkt.treningsOkt.varighet}"
-                       styleClass="lol2">
-          </h:inputText>
-          <f:facet name="footer">
-            <h:outputText value="#{reg.sum}"
-                          styleClass="lol2">
-              <f:convertNumber pattern="00"/>
-            </h:outputText>
-          </f:facet>
-        </h:column>
-        
-      
-        
-        
-        <!-- Kolonne sletting -->
-        <h:column>
-          <f:facet name="header">
-            <h:outputText value="#{tekster.slett}"
-                          styleClass="lol"/>
-          </f:facet>
-          <h:selectBooleanCheckbox value="#{enOkt.skalSlettes}" />
-        </h:column>
-      </h:dataTable>
-      
-      
-        </ui:define>
-      <ui:define name="bottom">
-        
-          
-            
-          
-        <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
-        <h:commandButton value="#{tekster.oppdater}" action="#{reg.oppdater()}"/>
-        
-      </ui:define>
-      </ui:composition>
-  </h:body>
+    <h:head>
+        <title>#{tekster.tittelTo}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/template/standardTemplate.xhtml">
+
+            <ui:define name="top">
+                <h3>#{tekster.oversikt}</h3>
+            </ui:define>
+            <ui:define name="content">
+
+                <br></br>
+                <h:dataTable value="#{reg.tabelldata}" var="enOkt"
+                             styleClass="standard" headerClass="hode" rowClasses="oddeRad, likeRad" footerClass="fot"
+                             rendered="#{reg.dataFins}">
+
+                    <!-- Kolonne øktnummer -->
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{tekster.oktnr}"/>
+
+                        </f:facet>
+                        <h:outputText value="#{enOkt.treningsOkt.oktNr}"
+                                      styleClass="lol"/>
+
+                    </h:column>
+
+
+                    <!-- Kolonne Dato -->
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{tekster.datoTre}"/>
+                        </f:facet>
+                        <h:inputText value="#{enOkt.treningsOkt.dato}"
+                                     styleClass="lol">
+                            <f:convertDateTime pattern="dd.MM.yyyy"/>
+                        </h:inputText>
+                        <f:facet name="footer">
+                            <h:outputText value="#{tekster.ant}"/>
+                        </f:facet>
+                    </h:column>
+
+
+                    <!-- Kolonne kategori -->
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{tekster.kategori}"/>
+                        </f:facet>
+                        <h:inputText value="#{enOkt.treningsOkt.kategori}"
+                                     styleClass="lol"/>
+                        <f:facet name="footer">
+                            <h:outputText value="#{reg.antallOkter}"/>
+                        </f:facet>
+                    </h:column>
+
+
+
+
+                    <!-- Kolonne tekst -->
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{tekster.tekst}"/>
+                        </f:facet>
+                        <h:inputText value="#{enOkt.treningsOkt.tekst}"
+                                     styleClass="lol"/>
+                        <f:facet name="footer">
+                            <h:outputText value="#{tekster.avg}" styleClass="lol2"/>
+                        </f:facet>
+                    </h:column>
+
+
+                    <!-- Kolonne varighet -->
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{tekster.varighet}"
+                                          styleClass="lol"/>
+                        </f:facet>
+                        <h:inputText value="#{enOkt.treningsOkt.varighet}"
+                                     styleClass="lol2">
+                        </h:inputText>
+                        <f:facet name="footer">
+                            <h:outputText value="#{reg.sum}"
+                                          styleClass="lol2">
+                                <f:convertNumber pattern="00"/>
+                            </h:outputText>
+                        </f:facet>
+                    </h:column>
+
+
+
+
+                    <!-- Kolonne sletting -->
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{tekster.slett}"
+                                          styleClass="lol"/>
+                        </f:facet>
+                        <h:selectBooleanCheckbox value="#{enOkt.skalSlettes}" />
+                    </h:column>
+                    
+                </h:dataTable>
+                <br></br>
+                <h:form>
+                <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
+                <h:commandButton value="#{tekster.oppdater}" action="#{reg.oppdater()}"/> 
+                </h:form>
+
+            </ui:define>
+
+            <ui:define name="bottom">
+                
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </html>
