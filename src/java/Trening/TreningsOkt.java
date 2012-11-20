@@ -30,61 +30,57 @@ public class TreningsOkt {
       
     }
     
-    public synchronized int getOktNr(){
+    public int getOktNr(){
       return oktNr;
     }
     
-    public synchronized void setOktNr(int nyttNr){
+    public void setOktNr(int nyttNr){
       oktNr = nyttNr;
     }
     
     
-    public synchronized Date getDato(){
+    public Date getDato(){
       return dato; 
     }
     
-    public synchronized int getVarighet(){
+    public int getVarighet(){
       return varighet; 
     }
     
-    public synchronized String getKategori(){
+    public String getKategori(){
       return kategori; 
     }
     
  
     
-    public synchronized String getTekst(){
+    public String getTekst(){
       return tekst; 
     }
     
-    public synchronized void setDato(Date enDato){
+    public void setDato(Date enDato){
      dato = enDato; 
     }
     
     
-    public synchronized void setVarighet(int enVarighet){    
+    public void setVarighet(int enVarighet){    
         varighet = enVarighet;
     }
    
-    public synchronized void setKategori(String enKategori){
+    public void setKategori(String enKategori){
       kategori = enKategori; 
       
     }
     
-    public synchronized void setTekst(String enTekst){
+    public void setTekst(String enTekst){
       
         tekst = enTekst;
         
       }
     
-    public final synchronized void nullstill() {
+    public final void nullstill() {
      
       dato = new Date(); 
       tekst = "";
       varighet = 0;
   }
-    
-    
-    
-
 }

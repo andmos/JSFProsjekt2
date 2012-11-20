@@ -17,13 +17,11 @@ public class TreningsOktStatus{
         skalSlettes = false;
     }
     
-    public synchronized boolean getSkalSlettes(){
-       //System.out.println(this.skalSlettes + "ER VERDIEN JEG LETER ETTER");  
+    public boolean getSkalSlettes(){ 
       return skalSlettes;
     }
     
     public void setSkalSlettes(boolean nySkalSlettes){
-       // System.out.println(nySkalSlettes + "ER VERDIEN JEG LETER ETTER");
         skalSlettes = nySkalSlettes;
     }
     

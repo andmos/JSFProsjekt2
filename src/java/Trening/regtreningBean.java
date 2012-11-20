@@ -53,31 +53,31 @@ public class regtreningBean implements Serializable {
         return tabelldata;
     }
 
-    public synchronized boolean getDataFins() {
+    public boolean getDataFins() {
         return (tabelldata.size() > 0);
     }
 
-    public synchronized String getBruker() {
+    public String getBruker() {
         return oversikt.getBruker();
     }
 
-    public synchronized double getSum() {
+    public double getSum() {
         return oversikt.getSum();
     }
 
-    public synchronized int getAntallOkter() {
+    public int getAntallOkter() {
         return oversikt.getAntallOkter();
     }
 
-    public synchronized TreningsOkt getTempOkt() {
+    public TreningsOkt getTempOkt() {
         return tempOkt;
     }
 
-    public synchronized void setTempOkt(TreningsOkt nyTempOkt) {
+    public void setTempOkt(TreningsOkt nyTempOkt) {
         tempOkt = nyTempOkt;
     }
 
-    public synchronized void oppdater() {
+    public void oppdater() {
 
         if (!tempOkt.getTekst().trim().equals("")) {
             TreningsOkt nyOkt = new TreningsOkt(tempOkt.getDato(), tempOkt.getKategori(), tempOkt.getTekst(), tempOkt.getVarighet());
@@ -102,35 +102,35 @@ public class regtreningBean implements Serializable {
 
     }
 
-    public synchronized Date getDato() {
+    public Date getDato() {
         return tempOkt.getDato();
     }
 
-    public synchronized int getVarighet() {
+    public int getVarighet() {
         return tempOkt.getVarighet();
     }
 
-    public synchronized String getTekst() {
+    public String getTekst() {
         return tempOkt.getTekst();
     }
 
-    public synchronized void setDato(Date nyDato) {
+    public void setDato(Date nyDato) {
         tempOkt.setDato(nyDato);
     }
 
-    public synchronized void setVarighet(int enVarighet) {
+    public void setVarighet(int enVarighet) {
         tempOkt.setVarighet(enVarighet);
     }
 
-    public synchronized void setKategori(String enkategori) {
+    public void setKategori(String enkategori) {
         tempOkt.setKategori(enkategori);
     }
 
-    public synchronized void setTekst(String enTekst) {
+    public void setTekst(String enTekst) {
         tempOkt.setTekst(enTekst);
     }
 
-    public synchronized ArrayList<String> getKategorier() {
+    public ArrayList<String> getKategorier() {
         return oversikt.Kategorier();
     }
 
@@ -148,7 +148,7 @@ public class regtreningBean implements Serializable {
     }
 
     @PostConstruct
-    public synchronized void setDatatable() {
+    public void setDatatable() {
         List<TreningsOktStatus> temp = Collections.synchronizedList(new ArrayList<TreningsOktStatus>());
         for (TreningsOkt t : oversikt.getAlleOkter()) {
             temp.add(new TreningsOktStatus(t));
@@ -171,11 +171,11 @@ public class regtreningBean implements Serializable {
         }
     }
 
-    public synchronized String getGjentattPassord() {
+    public String getGjentattPassord() {
         return gjentattPassord;
     }
 
-    public synchronized void setGjentattPassord(String nyttGjentattPassord) {
+    public void setGjentattPassord(String nyttGjentattPassord) {
         gjentattPassord = nyttGjentattPassord;
     }
 
