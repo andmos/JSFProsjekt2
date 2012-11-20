@@ -9,6 +9,7 @@
         <title>#{tekster.tittel}</title>
     </h:head>
     <h:body>
+        <h:form id="innlogging">
         <ui:composition template="/template/standardTemplate.xhtml">
             <ui:define name="top">
                 <h3>#{tekster.overskrift}</h3>
@@ -19,14 +20,14 @@
                     <tr>
                         <td>#{tekster.dato}</td>
                         <td>
-                            <h:inputText value="#{reg.dato}">
+                            <h:inputText label="#{tekster.dato}" value="#{reg.dato}" required="true">
                                 <f:convertDateTime pattern="dd-MM-yyyy"/>
                             </h:inputText>
                         </td>
                     </tr>
                     <tr>
                         <td>#{tekster.varighet}</td>
-                        <td><h:inputText value="#{reg.varighet}"/></td>
+                        <td><h:inputText label="#{tekster.varighet}" value="#{reg.varighet}" required="true"/></td>
                     </tr>
                     <tr>
                         <td>#{tekster.kategori}</td>
@@ -39,7 +40,7 @@
                     <tr>
                         <td>#{tekster.tekst}</td>
                         <td>
-                            <h:inputText value="#{reg.tekst}"/>
+                            <h:inputText label="#{tekster.tekst}" value="#{reg.tekst}" required="true"/>
                         </td>
                     </tr>
                 </table>
@@ -48,7 +49,9 @@
                     <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml"/>
                     <br></br>
                 </p>
+               
             </ui:define>
         </ui:composition>
+      </h:form>
     </h:body>  
 </html>
