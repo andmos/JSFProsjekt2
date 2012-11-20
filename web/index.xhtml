@@ -42,15 +42,16 @@
                     <tr>
                         <td>#{tekster.tekst}</td>
                         <td>
-                            <h:inputText value="#{reg.tekst}"/>
+                            <h:inputText label="#{tekster.tekst}" value="#{reg.tekst}" required="true"/>
                         </td>
                     </tr>
                 </table>
-                    </h:form> 
+                    
                    
                  <h:commandButton value="#{tekster.knappReg}" action="#{reg.oppdater()}"/>
-                <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml"/>
-                
+                 <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml" immediate="true"/>
+                </h:form> 
+                <h:messages style="color:white"/>
             </ui:define> 
         </ui:composition>
     </h:body>  
