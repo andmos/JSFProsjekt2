@@ -10,7 +10,7 @@
         <title>#{tekster.tittel}</title>
     </h:head>
     <h:body>
-     
+
         <ui:composition template="/template/standardTemplate.xhtml">
             <ui:define name="top">
                 <h3>#{tekster.overskrift}</h3>
@@ -18,42 +18,42 @@
             <ui:define name="content">
 
                 <h:form>
-                <table>
-                    <tr>
-                        <td>#{tekster.dato}</td>
-                        <td>
-                            <h:inputText label="#{tekster.dato}" value="#{reg.dato}" required="true">
-                                <f:convertDateTime pattern="dd-MM-yyyy"/>
-                            </h:inputText>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#{tekster.varighet}</td>
-                        <td><h:inputText label="#{tekster.varighet}" value="#{reg.varighet}" required="true"/></td>
-                    </tr>
-                    <tr>
-                        <td>#{tekster.kategori}</td>
-                        <td>
-                            <h:selectOneMenu value="#{reg.tempOkt.kategori}">
-                                <f:selectItems value="#{reg.kategorier}" var ="c"/>
-                            </h:selectOneMenu> 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>#{tekster.tekst}</td>
-                        <td>
-                            <h:inputText label="#{tekster.tekst}" value="#{reg.tekst}" required="true"/>
-                        </td>
-                    </tr>
-                </table>
-               
-                 <h:commandButton value="#{tekster.knappReg}" action="#{reg.oppdater()}"/>    
-           
-                <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml" immediate="true"/>
+                    <table>
+                        <tr>
+                            <td>#{tekster.dato}</td>
+                            <td>
+                                <h:inputText label="#{tekster.dato}" value="#{reg.dato}" required="true">
+                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                </h:inputText>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#{tekster.varighet}</td>
+                            <td><h:inputText label="#{tekster.varighet}" value="#{reg.varighet}" required="true"/></td>
+                        </tr>
+                        <tr>
+                            <td>#{tekster.kategori}</td>
+                            <td>
+                                <h:selectOneMenu value="#{reg.tempOkt.kategori}">
+                                    <f:selectItems value="#{reg.kategorier}" var ="c"/>
+                                </h:selectOneMenu> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#{tekster.tekst}</td>
+                            <td>
+                                <h:inputText label="#{tekster.tekst}" value="#{reg.tekst}" required="true"/>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <h:commandButton value="#{tekster.knappReg}" action="#{reg.oppdater()}"/>    
+
+                    <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml" immediate="true"/>
                 </h:form>
                 <h:messages style="color:white"/>
-           
-                
+
+
             </ui:define> 
         </ui:composition>
     </h:body>  
