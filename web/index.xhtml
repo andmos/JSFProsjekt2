@@ -9,13 +9,14 @@
         <title>#{tekster.tittel}</title>
     </h:head>
     <h:body>
-        <h:form id="innlogging">
+      
         <ui:composition template="/template/standardTemplate.xhtml">
             <ui:define name="top">
                 <h3>#{tekster.overskrift}</h3>
             </ui:define>
             <ui:define name="content">
 
+                <h:form id="innlogging">
                 <table>
                     <tr>
                         <td>#{tekster.dato}</td>
@@ -44,14 +45,19 @@
                         </td>
                     </tr>
                 </table>
-                <p>
+            
                     <h:commandButton value="#{tekster.knappReg}" action="#{reg.oppdater()}"/>
+                 </h:form>
+                <h:messages style="color:red"/>
+                
+              
                     <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml"/>
                     <br></br>
-                </p>
-               
+                
+                
             </ui:define>
         </ui:composition>
-      </h:form>
+      
+        
     </h:body>  
 </html>
