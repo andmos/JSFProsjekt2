@@ -11,13 +11,13 @@
     </h:head>
     <h:body>
      
-        <ui:composition template="/template/indexTemplate.xhtml">
+        <ui:composition template="/template/standardTemplate.xhtml">
             <ui:define name="top">
                 <h3>#{tekster.overskrift}</h3>
             </ui:define>
             <ui:define name="content">
 
-                <h:form id="innlogging">
+                <h:form>
                 <table>
                     <tr>
                         <td>#{tekster.dato}</td>
@@ -46,13 +46,13 @@
                         </td>
                     </tr>
                 </table>
+               
                  <h:commandButton value="#{tekster.knappReg}" action="#{reg.oppdater()}"/>    
-                </h:form> 
-                
-                
-                <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml"/>
-                
-              
+           
+                <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml" immediate="true"/>
+                </h:form>
+                 
+           
                 
             </ui:define> 
         </ui:composition>

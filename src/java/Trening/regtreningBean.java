@@ -245,4 +245,7 @@ public class regtreningBean implements Serializable {
         }
         return svar;
     }
+   
+    
+    
 }
