@@ -32,35 +32,35 @@ public class regtreningBean implements Serializable {
 
     public regtreningBean() {
     }
-    /*
+    /**
      * Henter ut gammelt passord for senere validering
      */
 
     public String getGammeltPassord() {
         return gammeltPassord;
     }
-    /*
+    /**
      * Tar imot gammelt passord for senere validering
      */
 
     public void setGammeltPassord(String gammeltPassord) {
         this.gammeltPassord = gammeltPassord;
     }
-    /*
+    /**
      * Henter ut nytt satt passord for senere validering.
      */
 
     public String getNyttPassord() {
         return nyttPassord;
     }
-    /*
+    /**
      * Setter nytt passord. 
      */
 
     public void setNyttPassord(String nyttPassord) {
         this.nyttPassord = nyttPassord;
     }
-    /*
+    /**
      * Henter ut en liste av treningsøktstatus som brukes i forbindelse med lagring 
      * av økter.
      */
@@ -68,49 +68,49 @@ public class regtreningBean implements Serializable {
     public List<TreningsOktStatus> getTabelldata() {
         return tabelldata;
     }
-    /*
+    /**
      * Sjekker om det er data i arraylisten over økter. 
      */
 
     public boolean getDataFins() {
         return (tabelldata.size() > 0);
     }
-    /*
+    /**
      * Henter brukernavn fra oversikt.
      */
 
     public String getBruker() {
         return oversikt.getBruker();
     }
-    /*
+    /**
      * Henter ut gjennomsnittlig varighet fra oversikten.
      */
 
     public double getSum() {
         return oversikt.getSum();
     }
-    /*
+    /**
      * Henter ut antall økter registrert i oversikten. 
      */
 
     public int getAntallOkter() {
         return oversikt.getAntallOkter();
     }
-    /*
+    /**
      * Henter ut den midlertidige økten som blir brukt til registrering mot arraylisten. 
      */
 
     public TreningsOkt getTempOkt() {
         return tempOkt;
     }
-    /*
+    /**
      * Oppretter en midlertidig økt som alle opperasjoner skjer mot.
      */
 
     public void setTempOkt(TreningsOkt nyTempOkt) {
         tempOkt = nyTempOkt;
     }
-    /*
+    /**
      * Oppdateringsmetode som registrerer endringer gjort på web, både i databasen og arraylisten.
      */
 
@@ -137,63 +137,63 @@ public class regtreningBean implements Serializable {
         }
 
     }
-    /*
+    /**
      * Henter ut dato fra en bestemt økt. 
      */
 
     public Date getDato() {
         return tempOkt.getDato();
     }
-    /*
+    /**
      * Henter ut varigheten til en betemt økt. 
      */
 
     public int getVarighet() {
         return tempOkt.getVarighet();
     }
-    /*
+    /**
      * Henter ut teksten som tilhører en bestemt økt. 
      */
 
     public String getTekst() {
         return tempOkt.getTekst();
     }
-    /*
+    /**
      * Setter dato for en bestemt økt.
      */
 
     public void setDato(Date nyDato) {
         tempOkt.setDato(nyDato);
     }
-    /*
+    /**
      * Setter varighet for en bestemt økt.
      */
 
     public void setVarighet(int enVarighet) {
         tempOkt.setVarighet(enVarighet);
     }
-    /*
+    /**
      * Setter kategorien som blir valgt til en bestemt økt for registrering.
      */
 
     public void setKategori(String enkategori) {
         tempOkt.setKategori(enkategori);
     }
-    /*
+    /**
      * Setter teksten som tilhører en bestemt økt. 
      */
 
     public void setTekst(String enTekst) {
         tempOkt.setTekst(enTekst);
     }
-    /*
+    /**
      * Henter ut kategori - arraylisten som brukes i registrering av økter.
      */
 
     public ArrayList<String> getKategorier() {
         return oversikt.Kategorier();
     }
-    /*
+    /**
      * Setter lokale instillinger for språk, engelsk.
      */
 
@@ -202,7 +202,7 @@ public class regtreningBean implements Serializable {
         context.getViewRoot().setLocale(new Locale("en"));
         return null;
     }
-    /*
+    /**
      * Setter lokale instillinger for språk, norsk.
      */
 
@@ -212,7 +212,7 @@ public class regtreningBean implements Serializable {
         return null;
     }
 
-    /*
+    /**
      * Holder arraylisten synkronisert. 
      */
     @PostConstruct
@@ -224,7 +224,7 @@ public class regtreningBean implements Serializable {
         }
         tabelldata = temp;
     }
-    /*
+    /**
      * Åpner forbindelse mot datastore gitt i objektvariablene. 
      * OBS: Dette er samme metode som i Oversikt-klassen, men må være her pga.
      * Nullpointer - problematikk. Egentlig unødvendig.
@@ -243,14 +243,14 @@ public class regtreningBean implements Serializable {
             System.out.println("Feil med databaseforbindelse " + e);
         }
     }
-    /*
+    /**
      * Henter gjenntatt passord for validering.
      */
 
     public String getGjentattPassord() {
         return gjentattPassord;
     }
-    /*
+    /**
      * Setter gjenntatt passord for validering.
      */
 
@@ -258,7 +258,7 @@ public class regtreningBean implements Serializable {
         gjentattPassord = nyttGjentattPassord;
     }
 
-    /*
+    /**
      * Sjekker at gammelt passord finnes i databasen.
      */
     public boolean sjekkPassordMotDb() {
@@ -288,7 +288,7 @@ public class regtreningBean implements Serializable {
         return t;
 
     }
-    /*
+    /**
      * Sjekker at nytt passord tilfredstiller krav til lengde og tegn.
      */
 
@@ -303,7 +303,7 @@ public class regtreningBean implements Serializable {
         return false;
     }
 
-    /*
+    /**
      * Bytter passord for innlogget bruker i databasen om alle kritierier er møtt.
      * Kriteriene er gitt som egne metoder.
      */

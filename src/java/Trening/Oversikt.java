@@ -21,7 +21,7 @@ public class Oversikt implements Serializable {
     private String bruker = getBrukerNavn();
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
 
-    /*
+    /**
      * Konstruktøren kobler seg opp mot datasourcen og henter ut alle øktene til 
      * den innloggede brukeren. Disse øktene legges så i arraylisten ved konstruksjon
      * av objektet. 
@@ -54,21 +54,21 @@ public class Oversikt implements Serializable {
             Opprydder.lukkForbindelse(forbindelse);
         }
     }
-    /*
+    /**
      * Henter ut brukernavnet til den innloggede brukeren.
      */
 
     public String getBruker() {
         return bruker;
     }
-    /*
+    /**
      * Returnerer arraylisten 
      */
 
     public ArrayList<TreningsOkt> getAlleOkter() {
         return alleOkt;
     }
-    /*
+    /**
      * Henter ut total sum av varigheter samt antall økter, og regner snittet av 
      * disse. 
      */
@@ -97,7 +97,7 @@ public class Oversikt implements Serializable {
         return (double) varighet / sum;
 
     }
-    /*
+    /**
      * Henter ut antall økter basert på arraylisten. Denne er nødvendig for korrekt
      * liste over antall økter. 
      */
@@ -105,7 +105,7 @@ public class Oversikt implements Serializable {
     public int getAntallOkter() {
         return alleOkt.size();
     }
-    /*
+    /**
      * Registrerer en ny treningsøkt i databasen og arraylisten basert på inputdata fra frontend. 
      */
 
@@ -150,7 +150,7 @@ public class Oversikt implements Serializable {
 
         }
     }
-    /*
+    /**
      * Oppdaterer en allerede ekisterende treningsøkt i databasen, valgt fra listen
      * i frontenden. 
      */
@@ -178,7 +178,7 @@ public class Oversikt implements Serializable {
             Opprydder.lukkForbindelse(forbindelse);
         }
     }
-    /*
+    /**
      * Sletter en økt fra databasen og arraylisten basert på valgt øktnummer. 
      */
 
@@ -201,7 +201,7 @@ public class Oversikt implements Serializable {
             Opprydder.lukkForbindelse(forbindelse);
         }
     }
-    /*
+    /**
      * Henter ut kategoriene som finnes i databasen og lager arraylist av disse.
      * Denne brukes senere til registrering av økter. 
      */
@@ -224,7 +224,7 @@ public class Oversikt implements Serializable {
         }
         return kategorier;
     }
-    /*
+    /**
      * Henter ut brukernavnet til den personen som er innlogget fra sesjonen.
      */
 
@@ -232,7 +232,7 @@ public class Oversikt implements Serializable {
         bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
         return bruker;
     }
-    /*
+    /**
      * Åpner forbindelse mot datastore gitt i objektvariablene. 
      */
 

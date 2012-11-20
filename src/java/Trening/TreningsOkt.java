@@ -17,20 +17,20 @@ public class TreningsOkt {
         this.tekst = tekst;
     }
 
-    /*
+    /**
      * Tom konstruktør som nullstiller et objekt.
      */
     public TreningsOkt() {
         nullstill();
     }
 
-    /*
+    /**
      * Henter ut øktnummeret til ei økt.
      */
     public int getOktNr() {
         return oktNr;
     }
-    /*
+    /**
      * Setter øktnummer for økta.
      */
 
@@ -38,20 +38,20 @@ public class TreningsOkt {
         oktNr = nyttNr;
     }
 
-    /*
+    /**
      * Henter ut dato for ei økt. OBS: date - objekt, omformes der det trengs.
      */
     public Date getDato() {
         return dato;
     }
-    /*
+    /**
      * Henter ut varigheten til ei økt. 
      */
 
     public int getVarighet() {
         return varighet;
     }
-    /*
+    /**
      * Henter ut kategorien for ei økt.
      */
 
@@ -59,14 +59,14 @@ public class TreningsOkt {
         return kategori;
     }
 
-    /*
+    /**
      * henter ut lagret tekst på ei økt.
      */
     public String getTekst() {
         return tekst;
     }
 
-    /*
+    /**
      * setter dato på økten. OBS: bruker Date - objekt, omforming skjer 
      * i metodene hvor det er nødvendig. 
      */
@@ -74,21 +74,21 @@ public class TreningsOkt {
         dato = enDato;
     }
 
-    /*
+    /**
      * Setter varigheten på økten
      */
     public void setVarighet(int enVarighet) {
         varighet = enVarighet;
     }
 
-    /*
+    /**
      * Lagrer kategorien treningen er basert på
      */
     public void setKategori(String enKategori) {
         kategori = enKategori;
 
     }
-    /*
+    /**
      * Setter teksten som lagres for ei økt
      */
 
@@ -97,7 +97,7 @@ public class TreningsOkt {
         tekst = enTekst;
 
     }
-    /*
+    /**
      * Nullstiller hele objektet 
      */
 
