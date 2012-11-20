@@ -57,8 +57,6 @@ public class TreningsOkt {
       return tekst; 
     }
     
-   
-    
     public synchronized void setDato(Date enDato){
      dato = enDato; 
     }
@@ -74,8 +72,10 @@ public class TreningsOkt {
     }
     
     public synchronized void setTekst(String enTekst){
-      tekst = enTekst;
-    }
+      
+        tekst = enTekst;
+        
+      }
     
     public final synchronized void nullstill() {
      
