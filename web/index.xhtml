@@ -42,13 +42,12 @@
                     <tr>
                         <td>#{tekster.tekst}</td>
                         <td>
-                            <h:inputText label="#{tekster.tekst}" value="#{reg.tekst}"/>
+                            <h:inputText value="#{reg.tekst}"/>
                         </td>
                     </tr>
                 </table>
                     </h:form> 
                    
-                
                  <h:commandButton value="#{tekster.knappReg}" action="#{reg.oppdater()}"/>
                 <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml"/>
                 
