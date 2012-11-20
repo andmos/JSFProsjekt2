@@ -25,8 +25,6 @@
                         </td>
                     </tr>
                     <tr>
-
-
                         <td>#{tekster.varighet}</td>
                         <td><h:inputText value="#{reg.varighet}"/></td>
                     </tr>
@@ -35,7 +33,6 @@
                         <td>
                             <h:selectOneMenu value="#{reg.tempOkt.kategori}">
                                 <f:selectItems value="#{reg.kategorier}" var ="c"/>
-
                             </h:selectOneMenu> 
                         </td>
                     </tr>
@@ -49,15 +46,9 @@
                 <p>
                     <h:commandButton value="#{tekster.knappReg}" action="#{reg.oppdater()}"/>
                     <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml"/>
-
                     <br></br>
-
                 </p>
-
             </ui:define>
-
-
-
         </ui:composition>
     </h:body>  
 </html>
