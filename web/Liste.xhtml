@@ -31,7 +31,7 @@ and open the template in the editor.
 
                         </f:facet>
                         <h:outputText value="#{enOkt.treningsOkt.oktNr}"
-                                      styleClass="lol"/>
+                                      styleClass="stil"/>
 
                     </h:column>
 
@@ -42,7 +42,7 @@ and open the template in the editor.
                             <h:outputText value="#{tekster.datoTre}"/>
                         </f:facet>
                         <h:inputText value="#{enOkt.treningsOkt.dato}"
-                                     styleClass="lol">
+                                     styleClass="stil">
                             <f:convertDateTime pattern="dd-MM-yyyy"/>
                         </h:inputText>
                         <f:facet name="footer">
@@ -57,7 +57,7 @@ and open the template in the editor.
                             <h:outputText value="#{tekster.kategori}"/>
                         </f:facet>
                         <h:inputText value="#{enOkt.treningsOkt.kategori}"
-                                     styleClass="lol"/>
+                                     styleClass="stil"/>
                         <f:facet name="footer">
                             <h:outputText value="#{reg.antallOkter}"/>
                         </f:facet>
@@ -72,9 +72,9 @@ and open the template in the editor.
                             <h:outputText value="#{tekster.tekst}"/>
                         </f:facet>
                         <h:inputText value="#{enOkt.treningsOkt.tekst}"
-                                     styleClass="lol"/>
+                                     styleClass="stil"/>
                         <f:facet name="footer">
-                            <h:outputText value="#{tekster.avg}" styleClass="lol2"/>
+                            <h:outputText value="#{tekster.avg}" styleClass="stil2"/>
                         </f:facet>
                     </h:column>
 
@@ -83,14 +83,14 @@ and open the template in the editor.
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="#{tekster.varighet}"
-                                          styleClass="lol"/>
+                                          styleClass="stil"/>
                         </f:facet>
                         <h:inputText value="#{enOkt.treningsOkt.varighet}"
-                                     styleClass="lol2">
+                                     styleClass="stil2">
                         </h:inputText>
                         <f:facet name="footer">
                             <h:outputText value="#{reg.sum}"
-                                          styleClass="lol2">
+                                          styleClass="stil2">
                                 <f:convertNumber pattern="00"/>
                             </h:outputText>
                         </f:facet>
@@ -103,7 +103,7 @@ and open the template in the editor.
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="#{tekster.slett}"
-                                          styleClass="lol"/>
+                                          styleClass="stil"/>
                         </f:facet>
                         <h:selectBooleanCheckbox value="#{enOkt.skalSlettes}" />
                     </h:column>

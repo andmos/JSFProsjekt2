@@ -16,7 +16,7 @@
         <h:form>
             <div id="top">
                 <ui:insert name="top">Top</ui:insert>
-                <h:outputText value="#{tekster.loggetInn} #{reg.bruker}" style="margin-left: 100px;"/> 
+                <h:outputText value="#{tekster.loggetInn} #{reg.bruker}" style="margin-left: 750px;"/> 
             </div>
         </h:form>
 
@@ -29,8 +29,8 @@
         <h:form>
             <div id="bottom">
                 <ui:insert name="bottom"></ui:insert>
-
-                #{tekster.svarFire}
+                <h:outputText value="#{tekster.svarFire}" style="margin-left: 0px; color: #FFFFFF"/>
+                
                 <br></br>
                 <br></br>
                 <h:commandLink action="#{reg.englishAction()}">
