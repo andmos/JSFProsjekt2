@@ -20,7 +20,7 @@
                             #{tekster.passordtekst}
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <td>#{tekster.nåPassord}</td>
                         <td><h:inputSecret value="#{reg.gammeltPassord}"/></td>
@@ -36,8 +36,9 @@
 
                 </table>
                 <p>
-                    <h:commandButton value="#{tekster.knappByttPassord}" action="#{reg.byttPassord()}"/>
                     <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
+                    <h:commandButton value="#{tekster.knappByttPassord}" action="#{reg.byttPassord()}"/>
+
 
                     <br></br>
 

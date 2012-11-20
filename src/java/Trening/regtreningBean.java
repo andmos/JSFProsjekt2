@@ -23,7 +23,7 @@ public class regtreningBean implements Serializable {
     private TreningsOkt tempOkt = new TreningsOkt();
     private Oversikt oversikt = new Oversikt();
     private List<TreningsOktStatus> tabelldata = Collections.synchronizedList(new ArrayList<TreningsOktStatus>());
-    private Connection forbindelse;
+    private Connection forbindelse; 
     private PreparedStatement setning = null;
     private ResultSet res = null;
     private String gjentattPassord = "";
@@ -32,51 +32,76 @@ public class regtreningBean implements Serializable {
 
     public regtreningBean() {
     }
-
+/*
+ * Henter ut gammelt passord for senere validering
+ */
     public String getGammeltPassord() {
         return gammeltPassord;
     }
-
+/*
+ * Tar imot gammelt passord for senere validering
+ */
     public void setGammeltPassord(String gammeltPassord) {
         this.gammeltPassord = gammeltPassord;
     }
-
+/*
+ * Henter ut nytt satt passord for senere validering.
+ */
     public String getNyttPassord() {
         return nyttPassord;
     }
-
+/*
+ * Setter nytt passord. 
+ */
     public void setNyttPassord(String nyttPassord) {
         this.nyttPassord = nyttPassord;
     }
-
+/*
+ * Henter ut en liste av treningsøktstatus som brukes i forbindelse med lagring 
+ * av økter.
+ */
     public List<TreningsOktStatus> getTabelldata() {
         return tabelldata;
     }
-
-    public boolean getDataFins() {
+/*
+ * Sjekker om det er data i arraylisten over økter. 
+ */
+         public boolean getDataFins() {
         return (tabelldata.size() > 0);
     }
-
+/*
+ * Henter brukernavn fra oversikt.
+ */
     public String getBruker() {
         return oversikt.getBruker();
     }
-
+/*
+ * Henter ut gjennomsnittlig varighet fra oversikten.
+ */
     public double getSum() {
         return oversikt.getSum();
     }
-
+/*
+ * Henter ut antall økter registrert i oversikten. 
+ */
     public int getAntallOkter() {
         return oversikt.getAntallOkter();
     }
-
+/*
+ * Henter ut den midlertidige økten som blir brukt til registrering mot arraylisten. 
+ */
     public TreningsOkt getTempOkt() {
         return tempOkt;
     }
-
+/*
+ * Oppretter en midlertidig økt som alle opperasjoner skjer mot.
+ */
     public void setTempOkt(TreningsOkt nyTempOkt) {
         tempOkt = nyTempOkt;
     }
-
+/*
+ * Oppdateringsmetode som registrerer endringer gjort på web, både i databasen og arraylisten.
+ */
     public void oppdater() {
 
         if (!tempOkt.getTekst().trim().equals("")) {
@@ -91,7 +116,6 @@ public class regtreningBean implements Serializable {
         while (indeks >= 0) {
             TreningsOktStatus tos = tabelldata.get(indeks);
             if (tos.getSkalSlettes()) {
-                System.out.println("indeks =" + indeks);
                 oversikt.slettOkt(tos.getTreningsOkt());
                 tabelldata.remove(indeks);
             } else {
@@ -101,52 +125,74 @@ public class regtreningBean implements Serializable {
         }
 
     }
-
+/*
+ * Henter ut dato fra en bestemt økt. 
+ */
     public Date getDato() {
         return tempOkt.getDato();
     }
-
+/*
+ * Henter ut varigheten til en betemt økt. 
+ */
     public int getVarighet() {
         return tempOkt.getVarighet();
     }
-
+/*
+ * Henter ut teksten som tilhører en bestemt økt. 
+ */
     public String getTekst() {
         return tempOkt.getTekst();
     }
-
+/*
+ * Setter dato for en bestemt økt.
+ */
     public void setDato(Date nyDato) {
         tempOkt.setDato(nyDato);
     }
-
+/*
+ * Setter varighet for en bestemt økt.
+ */
     public void setVarighet(int enVarighet) {
         tempOkt.setVarighet(enVarighet);
     }
-
+/*
+ * Setter kategorien som blir valgt til en bestemt økt for registrering.
+ */
     public void setKategori(String enkategori) {
         tempOkt.setKategori(enkategori);
     }
-
+/*
+ * Setter teksten som tilhører en bestemt økt. 
+ */
     public void setTekst(String enTekst) {
         tempOkt.setTekst(enTekst);
     }
-
+/*
+ * Henter ut kategori - arraylisten som brukes i registrering av økter.
+ */
     public ArrayList<String> getKategorier() {
         return oversikt.Kategorier();
     }
-
+    /*
+    * Setter lokale instillinger for språk, engelsk.
+    */
     public String englishAction() {
-        System.out.println("her er jeg");
         FacesContext context = FacesContext.getCurrentInstance();
         context.getViewRoot().setLocale(new Locale("en"));
         return null;
     }
-
+/*
+ * Setter lokale instillinger for språk, norsk.
+ */
     public String norwegianAction() {
         FacesContext context = FacesContext.getCurrentInstance();
         context.getViewRoot().setLocale(new Locale("no"));
         return null;
     }
-
+    
+    /*
+     * Holder arraylisten synkronisert. 
+     */
     @PostConstruct
     public void setDatatable() {
         List<TreningsOktStatus> temp = Collections.synchronizedList(new ArrayList<TreningsOktStatus>());
@@ -156,7 +202,11 @@ public class regtreningBean implements Serializable {
         }
         tabelldata = temp;
     }
-
+/*
+ * Åpner forbindelse mot datastore gitt i objektvariablene. 
+ * OBS: Dette er samme metode som i Oversikt-klassen, men må være her pga.
+ * Nullpointer - problematikk. Egentlig unødvendig.
+ */
     public void apneForbindelse() {
         try {
             if (ds == null) {
@@ -170,15 +220,22 @@ public class regtreningBean implements Serializable {
             System.out.println("Feil med databaseforbindelse " + e);
         }
     }
-
+/*
+ * Henter gjenntatt passord for validering.
+ */
     public String getGjentattPassord() {
         return gjentattPassord;
     }
-
+/*
+ * Setter gjenntatt passord for validering.
+ */
     public void setGjentattPassord(String nyttGjentattPassord) {
         gjentattPassord = nyttGjentattPassord;
     }
 
+ /*
+  * Sjekker at gammelt passord finnes i databasen.
+  */   
     public boolean sjekkPassordMotDb() {
 
         boolean t = false;
@@ -189,7 +246,6 @@ public class regtreningBean implements Serializable {
             setning.setString(1, getBruker());
             res = setning.executeQuery();
             String fraDb = "";
-            System.out.println("Jeg er inne i SjekkPassord");
             while (res.next()) {
                 fraDb = res.getString(1);
             }
@@ -207,7 +263,9 @@ public class regtreningBean implements Serializable {
         return t;
 
     }
-
+/*
+ * Sjekker at nytt passord tilfredstiller krav til lengde og tegn.
+ */
     public boolean sjekkNyttPassord() {
 
         String pattern = "^(?=.*[0-9])(?=.*[`~!@#$%^&*()_+,./{}|:\"<>?])[a-zA-Z0-9].{6,10}$";
@@ -218,7 +276,11 @@ public class regtreningBean implements Serializable {
         System.out.println("FALSE");
         return false;
     }
-
+    
+    /*
+     * Bytter passord for innlogget bruker i databasen om alle kritierier er møtt.
+     * Kriteriene er gitt som egne metoder.
+     */
     public String byttPassord() {
 
         String svar = null;
