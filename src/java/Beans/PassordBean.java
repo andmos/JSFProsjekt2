@@ -1,27 +1,23 @@
-/**
- * Jobber med det - MARIA
- * 
- * /innloggingbean - bruker
- * 
- */
-package Trening;
+
+package Beans;
 
 
+import Trening.Bruker;
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.sql.DataSource;
 
-@Named("login")
+@Named("pwd")
 @RequestScoped
-public class InnloggingBean { 
+public class PassordBean { 
     
     @Resource(name = "jdbc/waplj_prosjekt")
     DataSource ds;
     
     Bruker bruker = new Bruker();
     
-    public InnloggingBean(){
+    public PassordBean(){
         
     }
     

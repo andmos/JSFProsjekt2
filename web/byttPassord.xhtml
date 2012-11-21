@@ -23,21 +23,21 @@
 
                     <tr>
                         <td>#{tekster.nåPassord}</td>
-                        <td><h:inputSecret value="#{reg.gammeltPassord}"/></td>
+                        <td><h:inputSecret value="#{pwd.gammeltPassord}"/></td>
                     </tr>
                     <tr>
                         <td>#{tekster.nyttPassord}</td>
-                        <td><h:inputSecret value="#{reg.nyttPassord}"/></td>
+                        <td><h:inputSecret value="#{pwd.nyttPassord}"/></td>
                     </tr>
                     <tr>
                         <td>#{tekster.gjentattPassord}</td>
-                        <td><h:inputSecret value="#{reg.gjentattPassord}"/></td>
+                        <td><h:inputSecret value="#{pwd.gjentattPassord}"/></td>
                     </tr>
 
                 </table>
                 <p>
                     <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
-                    <h:commandButton value="#{tekster.knappByttPassord}" action="#{reg.byttPassord()}"/>
+                    <h:commandButton value="#{tekster.knappByttPassord}" action="#{login.byttPassord()}"/>
 
 
                     <br></br>
