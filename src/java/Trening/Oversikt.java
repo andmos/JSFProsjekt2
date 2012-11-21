@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.annotation.Resource;
-import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -21,8 +20,8 @@ public class Oversikt implements Serializable {
     private ResultSet res = null;
     
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
-    
-    private String bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
+    private Bruker bruker = new Bruker(); 
+  //  private String bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
    
     /**
      * Konstruktøren kobler seg opp mot datasourcen og henter ut alle øktene til
@@ -34,7 +33,7 @@ public class Oversikt implements Serializable {
             ds = (DataSource) new InitialContext().lookup("jdbc/waplj_prosjekt");
             forbindelse = ds.getConnection();
             setning = forbindelse.prepareStatement("select * from trening where brukernavn=?");
-            setning.setString(1, bruker);
+            setning.setString(1, bruker.getBruker());
             res = setning.executeQuery();
             while (res.next()) {
                 Date enDato = res.getDate("Dato");
@@ -62,7 +61,7 @@ public class Oversikt implements Serializable {
      * Henter ut brukernavnet til den innloggede brukeren.
      */
     public String getBruker() {
-        return bruker;
+        return bruker.getBruker();
     }
 
     /**
@@ -84,7 +83,7 @@ public class Oversikt implements Serializable {
             apneForbindelse();
             String settning = "select SUM(varighet), count(oktnr) FROM trening WHERE brukernavn=?";
             setning = forbindelse.prepareStatement(settning);
-            setning.setString(1, bruker);
+            setning.setString(1, bruker.getBruker());
             res = setning.executeQuery();
             while (res.next()) {
                 varighet = res.getInt(1);
@@ -130,7 +129,7 @@ public class Oversikt implements Serializable {
             setning.setInt(1, varighet);
             setning.setString(2, kategori);
             setning.setString(3, tekst);
-            setning.setString(4, bruker);
+            setning.setString(4, bruker.getBruker());
             setning.executeUpdate();
             Opprydder.lukkSetning(setning);
 
