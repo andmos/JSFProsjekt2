@@ -76,7 +76,7 @@ public class Oversikt implements Serializable {
      * Henter ut total sum av varigheter samt antall økter, og regner snittet av
      * disse.
      */
-    public double getSum() {
+    public double getSnitt() {
 
         double sum = 0;
         int varighet = 0;
