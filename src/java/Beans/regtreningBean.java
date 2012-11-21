@@ -1,5 +1,9 @@
-package Trening;
+package Beans;
 
+import Hjelpeklasser.Opprydder;
+import Trening.Oversikt;
+import Trening.TreningsOkt;
+import Trening.TreningsOktStatus;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +20,7 @@ import javax.sql.DataSource;
 
 @Named("reg")
 @SessionScoped
-public class regtreningBean implements Serializable {
+public class RegtreningBean implements Serializable {
 
     @Resource(name = "jdbc/waplj_prosjekt")
     DataSource ds;
@@ -30,7 +34,7 @@ public class regtreningBean implements Serializable {
     private String gammeltPassord = "";
     private String nyttPassord = "";
 
-    public regtreningBean() {
+    public RegtreningBean() {
     }
 
     /**
@@ -194,24 +198,6 @@ public class regtreningBean implements Serializable {
      */
     public ArrayList<String> getKategorier() {
         return oversikt.Kategorier();
-    }
-
-    /**
-     * Setter lokale instillinger for språk, engelsk.
-     */
-    public String englishAction() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.getViewRoot().setLocale(new Locale("en"));
-        return null;
-    }
-
-    /**
-     * Setter lokale instillinger for språk, norsk.
-     */
-    public String norwegianAction() {
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.getViewRoot().setLocale(new Locale("no"));
-        return null;
     }
 
     /**

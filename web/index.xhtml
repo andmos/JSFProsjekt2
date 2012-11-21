@@ -17,19 +17,26 @@
             </ui:define>
             <ui:define name="content">
 
-                <h:form id="innlogging">
+                <h:form>
                     <table>
                         <tr>
                             <td>#{tekster.dato}</td>
                             <td>
-                                <h:inputText label="#{tekster.dato}" value="#{reg.dato}" required="true">
-                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                <h:inputText id="dato" label="#{tekster.dato}" value="#{reg.dato}" required="true" requiredMessage="#{errorTekst.feilDato}" converterMessage="#{errorTekst.feilFormat}">
+                                <f:convertDateTime pattern="dd-MM-yyyy"/>                                    
                                 </h:inputText>
+                                <h:message for="dato" style="color: white"/>
                             </td>
                         </tr>
                         <tr>
                             <td>#{tekster.varighet}</td>
-                            <td><h:inputText label="#{tekster.varighet}" value="#{reg.varighet}" required="true"/></td>
+                            <td>
+                                <h:inputText id="tid" label="#{tekster.varighet}" value="#{reg.varighet}" converter="javax.faces.Integer" 
+                                             required="true" requiredMessage="#{errorTekst.feilVarighet}" validatorMessage="#{errorTekst.feilVarighet}" converterMessage="#{errorTekst.feilVarighet}">
+                                    <f:validateLongRange minimum="1" maximum="5000"/>
+                                </h:inputText>
+                                <h:message for="tid" style="color: white"/>
+                            </td>
                         </tr>
                         <tr>
                             <td>#{tekster.kategori}</td>
@@ -42,7 +49,8 @@
                         <tr>
                             <td>#{tekster.tekst}</td>
                             <td>
-                                <h:inputText label="#{tekster.tekst}" value="#{reg.tekst}" maxlength="30" required="true"/>
+                                <h:inputText id="tekst" label="#{tekster.tekst}" value="#{reg.tekst}" maxlength="30" required="true" requiredMessage="#{errorTekst.feilTekst}"/>
+                                <h:message for="tekst" style="color: white"/>
                             </td>
                         </tr>
                     </table>
@@ -52,7 +60,6 @@
                     <h:commandButton value="#{tekster.knappByttPassord}" action="byttPassord.xhtml" immediate="true"/>
                 </h:form> 
 
-                <h:messages style="color:white"/>
             </ui:define> 
         </ui:composition>
     </h:body>  

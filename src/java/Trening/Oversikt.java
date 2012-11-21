@@ -1,5 +1,6 @@
 package Trening;
 
+import Hjelpeklasser.Opprydder;
 import java.io.Serializable;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -18,9 +19,11 @@ public class Oversikt implements Serializable {
     private Connection forbindelse = null;
     private PreparedStatement setning = null;
     private ResultSet res = null;
-    private String bruker = getBrukerNavn();
+    
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
-
+    
+    private String bruker = getBrukerNavn();
+   
     /**
      * Konstruktøren kobler seg opp mot datasourcen og henter ut alle øktene til
      * den innloggede brukeren. Disse øktene legges så i arraylisten ved

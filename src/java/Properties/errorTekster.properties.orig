@@ -1,0 +1,6 @@
+feilDato=Skriv inn en dato
+feilVarighet=Du må skrive inn tallverdi
+feilTekst=Du må fylle inn tekst
+feilLengde=For mange tegn, max 30
+tomBoks=Skriv inn tekst
+feilFormat=Du har skrevet inn datoen feil (YYYY-MM-dd)

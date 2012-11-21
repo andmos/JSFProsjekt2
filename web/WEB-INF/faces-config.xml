@@ -3,36 +3,50 @@
 <!-- =========== FULL CONFIGURATION FILE ================================== -->
 
 <faces-config version="2.0"
-    xmlns="http://java.sun.com/xml/ns/javaee" 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+              xmlns="http://java.sun.com/xml/ns/javaee" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
         
-        <application>
-            <locale-config>
-                <default-locale>no</default-locale>
-                <supported-locale>en</supported-locale>
-            </locale-config>
-            <resource-bundle>
-                <base-name>Trening.treningTekster</base-name>
-                <var>tekster</var>
-            </resource-bundle>  
-       </application>
-       
-       <navigation-rule>
+    <application>
+        <locale-config>
+            <default-locale>no</default-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>Properties.treningTekster</base-name>
+            <var>tekster</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>Properties.errorTekster</base-name>
+            <var>errorTekst</var>
+        </resource-bundle>  
+    </application>
+     
+     
+    <navigation-rule>
+        <from-view-id>/byttPassord.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>passordOk</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+        
+        <from-view-id>/byttPassord.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>passordFeil</from-outcome>
+            <to-view-id>/feilPassord.xhtml</to-view-id>
+        </navigation-case>
             
-            <from-view-id>/byttPassord.xhtml</from-view-id>
-            <navigation-case>
-                <from-outcome>passordOk</from-outcome>
-                <to-view-id>/index.xhtml</to-view-id>
-            </navigation-case>
-            
-              <navigation-case>
-                <from-outcome>passordFeil</from-outcome>
-                <to-view-id>/feilPassord.xhtml</to-view-id>
-            </navigation-case>
-            
-      
-      </navigation-rule>   
-      
-    
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/Liste.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/Liste.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>case1</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

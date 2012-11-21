@@ -1,4 +1,4 @@
-package Trening;
+package Hjelpeklasser;
 
 import java.sql.*;
 
