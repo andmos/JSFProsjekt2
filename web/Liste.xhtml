@@ -18,7 +18,7 @@ and open the template in the editor.
                 <h3>#{tekster.oversikt}</h3>
             </ui:define>
             <ui:define name="content">
-                
+
                 <br></br>
                 <h:dataTable value="#{reg.tabelldata}" var="enOkt"
                              styleClass="standard" headerClass="hode" rowClasses="oddeRad, likeRad" footerClass="fot"
@@ -78,7 +78,6 @@ and open the template in the editor.
                         </f:facet>
                     </h:column>
 
-
                     <!-- Kolonne varighet -->
                     <h:column>
                         <f:facet name="header">
@@ -96,9 +95,6 @@ and open the template in the editor.
                         </f:facet>
                     </h:column>
 
-
-
-
                     <!-- Kolonne sletting -->
                     <h:column>
                         <f:facet name="header">
@@ -107,18 +103,18 @@ and open the template in the editor.
                         </f:facet>
                         <h:selectBooleanCheckbox value="#{enOkt.skalSlettes}" />
                     </h:column>
-                    
+
                 </h:dataTable>
                 <br></br>
                 <h:form>
-                <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
-                <h:commandButton value="#{tekster.oppdater}" action="#{reg.oppdater()}"/> 
+                    <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
+                    <h:commandButton value="#{tekster.oppdater}" action="#{reg.oppdater()}"/> 
                 </h:form>
 
             </ui:define>
 
             <ui:define name="bottom">
-                
+
             </ui:define>
         </ui:composition>
     </h:body>
