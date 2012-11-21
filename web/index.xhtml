@@ -23,7 +23,7 @@
                             <td>#{tekster.dato}</td>
                             <td>
                                 <h:inputText id="dato" label="#{tekster.dato}" value="#{reg.dato}" required="true" requiredMessage="#{errorTekst.feilDato}" converterMessage="#{errorTekst.feilFormat}">
-                                <f:convertDateTime pattern="dd-MM-yyyy"/>                                    
+                                    <f:convertDateTime pattern="dd-MM-yyyy"/>                                    
                                 </h:inputText>
                                 <h:message for="dato" style="color: white"/>
                             </td>

@@ -63,7 +63,10 @@ public class PassordBean {
         bruker.setGjentattPassord(nyttGjentattPassord);
     }
     
-    
+    /**
+     * Bytter passordet i databasen. 
+     * 
+     */
     public String byttPassord(){
         return bruker.byttPassord();
     }
