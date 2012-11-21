@@ -7,6 +7,7 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
               xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
         
+    <!-- Mapper opp språkfilene våre -->
     <application>
         <locale-config>
             <default-locale>no</default-locale>
@@ -22,24 +23,20 @@
         </resource-bundle>  
     </application>
      
-     
+    <!-- Navigation-regler for funksjonsavhengige utfall -->
     <navigation-rule>
-       
         <navigation-case>
             <from-action>#{pwd.byttPassord()}</from-action>
             <from-outcome>passordOk</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         
-      
         <navigation-case>
             <from-action>#{pwd.byttPassord()}</from-action>
             <from-outcome>passordFeil</from-outcome>
             <to-view-id>/feilPassord.xhtml</to-view-id>
         </navigation-case>
-            
-        
-        
+             
     </navigation-rule>
     <navigaton-rule>
         <navigation-case>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+   
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>
@@ -9,6 +10,8 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    
+    
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern> 
@@ -23,7 +26,7 @@
         <welcome-file>/index.xhtml</welcome-file>
     </welcome-file-list>
     
-
+    <!-- Definerer hvile roller som har tilgang til hvilke mapper  -->
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>Protected Pages</web-resource-name>
@@ -33,12 +36,13 @@
             <role-name>bruker</role-name>
         </auth-constraint>
     </security-constraint>
-    
+   
+    <!-- Definerer autentiseringen til siden -->
     <login-config>
         <auth-method>BASIC</auth-method>
         <realm-name>waplj_realm</realm-name>
     </login-config>
-   <security-role>
+    <security-role>
         <role-name>bruker</role-name>
-   </security-role>
+    </security-role>
 </web-app>
