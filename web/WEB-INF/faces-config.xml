@@ -24,24 +24,33 @@
      
      
     <navigation-rule>
-        <from-view-id>/byttPassord.xhtml</from-view-id>
+       
         <navigation-case>
+            <from-action>#{pwd.byttPassord()}</from-action>
             <from-outcome>passordOk</from-outcome>
             <to-view-id>/index.xhtml</to-view-id>
         </navigation-case>
         
-        <from-view-id>/byttPassord.xhtml</from-view-id>
+      
         <navigation-case>
+            <from-action>#{pwd.byttPassord()}</from-action>
             <from-outcome>passordFeil</from-outcome>
             <to-view-id>/feilPassord.xhtml</to-view-id>
         </navigation-case>
             
-        <from-view-id>/index.xhtml</from-view-id>
+        
+        
+    </navigation-rule>
+    <navigaton-rule>
         <navigation-case>
             <from-outcome>case1</from-outcome>
             <to-view-id>/Liste.xhtml</to-view-id>
         </navigation-case>
-    </navigation-rule>
+    </navigaton-rule>
+        
+    
+    
+    
     <navigation-rule>
         <from-view-id>/Liste.xhtml</from-view-id>
         <navigation-case>
