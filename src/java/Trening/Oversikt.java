@@ -22,7 +22,7 @@ public class Oversikt implements Serializable {
     
     private ArrayList<TreningsOkt> alleOkt = new ArrayList<TreningsOkt>();
     
-    private String bruker = getBrukerNavn();
+    private String bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
    
     /**
      * Konstruktøren kobler seg opp mot datasourcen og henter ut alle øktene til
@@ -82,8 +82,9 @@ public class Oversikt implements Serializable {
         int varighet = 0;
         try {
             apneForbindelse();
-            String settning = "select SUM(varighet), count(oktnr) FROM trening";
+            String settning = "select SUM(varighet), count(oktnr) FROM trening WHERE brukernavn=?";
             setning = forbindelse.prepareStatement(settning);
+            setning.setString(1, bruker);
             res = setning.executeQuery();
             while (res.next()) {
                 varighet = res.getInt(1);
@@ -227,14 +228,6 @@ public class Oversikt implements Serializable {
             Opprydder.lukkForbindelse(forbindelse);
         }
         return kategorier;
-    }
-
-    /**
-     * Henter ut brukernavnet til den personen som er innlogget fra sesjonen.
-     */
-    public String getBrukerNavn() {
-        bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
-        return bruker;
     }
 
     /**
