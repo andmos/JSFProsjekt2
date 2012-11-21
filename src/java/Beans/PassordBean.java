@@ -3,14 +3,16 @@ package Beans;
 
 
 import Trening.Bruker;
+import java.io.Serializable;
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import javax.sql.DataSource;
 
 @Named("pwd")
-@RequestScoped
-public class PassordBean { 
+@SessionScoped
+public class PassordBean implements Serializable { 
     
     @Resource(name = "jdbc/waplj_prosjekt")
     DataSource ds;

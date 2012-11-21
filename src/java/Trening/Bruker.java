@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.annotation.Resource;
+import javax.faces.context.FacesContext;
+import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 public class Bruker {
@@ -20,7 +22,7 @@ public class Bruker {
     private String gjentattPassord = "";
     private String gammeltPassord = "";
     private String nyttPassord = "";
-    private String bruker;
+    private String bruker = FacesContext.getCurrentInstance().getExternalContext().getRemoteUser();
     
     
     public Bruker(){
@@ -81,6 +83,7 @@ public class Bruker {
      */
     public void apneForbindelse() {
         try {
+            ds = (DataSource) new InitialContext().lookup("jdbc/waplj_prosjekt");
             if (ds == null) {
                 throw new SQLException("ingen datasource funnet");
             }
@@ -98,7 +101,6 @@ public class Bruker {
      * Sjekker at gammelt passord finnes i databasen.
      */
     public boolean sjekkPassordMotDb() {
-        apneForbindelse();
         boolean t = false;
         try {
             apneForbindelse();
@@ -107,6 +109,7 @@ public class Bruker {
             setning.setString(1, getBruker());
             res = setning.executeQuery();
             String fraDb = "";
+            
             while (res.next()) {
                 fraDb = res.getString(1);
             }
@@ -142,11 +145,12 @@ public class Bruker {
      * møtt. Kriteriene er gitt som egne metoder.
      */
     public String byttPassord() {
-
+        System.out.println(sjekkPassordMotDb() + "SJEKKER PASSORD:" + " " + nyttPassord + gjentattPassord + " " + sjekkNyttPassord());
         String svar = null;
         if (sjekkPassordMotDb() && sjekkNyttPassord() && nyttPassord.equals(gjentattPassord) && !(nyttPassord.equals(gammeltPassord))) {
-
+            System.out.println(sjekkPassordMotDb() + "SJEKKER PASSORD:" + " " + nyttPassord + gjentattPassord + " " + sjekkNyttPassord());
             try {
+                apneForbindelse();
                 forbindelse.setAutoCommit(false);
                 setning = forbindelse.prepareStatement("UPDATE bruker SET passord=? WHERE brukernavn=?");
                 setning.setString(1, nyttPassord);
