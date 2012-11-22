@@ -109,6 +109,7 @@ and open the template in the editor.
                 <h:form>
                     <h:commandButton value="#{tekster.knappTilbake}" action="index"/>
                     <h:commandButton value="#{tekster.oppdater}" action="#{reg.oppdater()}"/> 
+                    <h:outputText value="#{tekster.totTrening1} #{reg.totAntTreninger} #{tekster.totTrening2}" style="margin-left: 170px;"/>
                 </h:form>
 
             </ui:define>

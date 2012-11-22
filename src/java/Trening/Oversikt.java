@@ -75,6 +75,26 @@ public class Oversikt implements Serializable {
      * Henter ut total sum av varigheter samt antall økter, og regner snittet av
      * disse.
      */
+    public int getTotAntTreninger(){
+      int sum=0;
+      try{
+        apneForbindelse();
+        setning = forbindelse.prepareStatement("SELECT COUNT(brukernavn) FROM trening");
+        res = setning.executeQuery();
+        while(res.next()){
+          sum = res.getInt(1);
+        }
+                
+      }catch(SQLException e){
+        System.out.println("sql feil i getTotAntTreninger()" + e.getMessage());
+      }finally{
+        Opprydder.lukkSetning(setning);
+        Opprydder.settAutoCommit(forbindelse);
+        Opprydder.lukkForbindelse(forbindelse);
+      }
+      return sum;
+    }
+    
     public double getSnitt() {
 
         double sum = 0;
@@ -97,8 +117,10 @@ public class Oversikt implements Serializable {
             Opprydder.settAutoCommit(forbindelse);
             Opprydder.lukkForbindelse(forbindelse);
         }
+        if((double) varighet / sum != 0){
         return (double) varighet / sum;
-
+        }
+        return -1; 
     }
 
     /**
